@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ydI-6k-V7x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xdT-lz-Qlp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHb-fw-Aku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="229"/>
+            <point key="canvasLocation" x="836" y="238"/>
         </scene>
         <!--Groups-->
         <scene sceneID="2Qo-fE-2dT">
@@ -70,7 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIJ-Sj-Oeo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="-478"/>
+            <point key="canvasLocation" x="836" y="-478"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uuc-cq-NG8">
@@ -88,10 +88,11 @@
             </objects>
             <point key="canvasLocation" x="76" y="-478"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Groups-->
         <scene sceneID="zoo-eu-9qg">
             <objects>
                 <splitViewController id="ydI-6k-V7x" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Groups" image="groups" id="185-Qu-SGJ"/>
                     <connections>
                         <segue destination="CaI-ca-5lk" kind="relationship" relationship="masterViewController" id="XIT-Qm-eQL"/>
                         <segue destination="QuI-IB-146" kind="relationship" relationship="detailViewController" id="l6Q-wY-ki5"/>
@@ -99,10 +100,48 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQJ-vJ-cEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-876" y="-145"/>
+            <point key="canvasLocation" x="-706" y="-145"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Qpz-qg-IVL">
+            <objects>
+                <viewController id="0Dq-vi-M6H" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BQZ-Gu-xl5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2Ci-2c-KsX"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="kYg-qw-R9r"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h51-Lb-hwD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1482" y="572"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="XHz-j6-mch">
+            <objects>
+                <tabBarController id="xdT-lz-Qlp" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t1S-nH-qb6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ydI-6k-V7x" kind="relationship" relationship="viewControllers" id="8Gq-ea-TeM"/>
+                        <segue destination="0Dq-vi-M6H" kind="relationship" relationship="viewControllers" id="0XO-I5-daB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xW-dm-cVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1481" y="-145"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="groups" width="30" height="30"/>
+        <image name="settings" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xqi-Hi-G8N"/>
+        <segue reference="l6Q-wY-ki5"/>
     </inferredMetricsTieBreakers>
 </document>

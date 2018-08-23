@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupsTableViewController: UITableViewController {
+class GroupsTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
     let groups = [
         "one",
@@ -18,6 +18,8 @@ class GroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        splitViewController?.delegate = self
+        splitViewController?.preferredDisplayMode = .allVisible
     }
 
     // MARK: - Table view data source
@@ -34,6 +36,17 @@ class GroupsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
         cell.textLabel?.text = groups[indexPath.row]
         return cell
+    }
+    
+    // MARK: - Split view controller
+    
+    /*
+     By returning "true" from this UISplitViewControllerDelegate method,
+     the Root View Controller Scene will be shown as the default view on the iPhone.
+     */
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
     }
 
     // MARK: - Navigation
