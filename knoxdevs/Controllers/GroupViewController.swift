@@ -11,8 +11,9 @@ import UIKit
 class GroupViewController: UIViewController {
     
     @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
-    var item: String? {
+    var group: Group? {
         didSet {
             updateUI()
         }
@@ -26,8 +27,9 @@ class GroupViewController: UIViewController {
     
     func updateUI() {
         loadViewIfNeeded()
-        if let item = item {
-            itemLabel.text = item
+        if let group = group {
+            itemLabel.text = group.name
+            descriptionLabel.text = group.desc
         }
     }
 

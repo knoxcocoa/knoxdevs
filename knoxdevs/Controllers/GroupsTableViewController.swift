@@ -10,16 +10,28 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    let groups = [
-        "one",
-        "two",
-        "three"
-    ]
+    let sqlitedb = SQLiteDatabase()
+    var groups = [Group]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setup split view controller
         splitViewController?.delegate = self
         splitViewController?.preferredDisplayMode = .allVisible
+        
+        // open sqlite database and populate groups array
+        do {
+            try sqlitedb.open()
+        } catch SQLiteError.Path(let message) {
+            print("\(message)")
+        } catch SQLiteError.Open(let message) {
+            print("\(message)")
+        } catch {
+            print("Unexpected error.")
+        }
+        guard let allGroups = sqlitedb.allGroups() else { return }
+        groups = allGroups
     }
 
     // MARK: - Table view data source
@@ -34,7 +46,9 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
-        cell.textLabel?.text = groups[indexPath.row]
+        cell.textLabel?.text = groups[indexPath.row].name
+        cell.detailTextLabel?.text = groups[indexPath.row].tags
+        cell.imageView?.image = UIImage(named: "people")
         return cell
     }
     
@@ -55,7 +69,7 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
         if segue.identifier == "GroupSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let groupVC = segue.destination as? GroupViewController
-                groupVC?.item = groups[indexPath.row]
+                groupVC?.group = groups[indexPath.row]
             }
         }
     }
