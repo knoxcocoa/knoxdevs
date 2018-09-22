@@ -66,7 +66,7 @@
 			children = (
 				867DF35C212CF6A300991CB3 /* AppDelegate.swift */,
 				86AC41B821334400002E73E5 /* Models */,
-				86AC41B7213343D1002E73E5 /* Controllers */,
+				86AC41B7213343D1002E73E5 /* View Controllers */,
 				867DF363212CF6A300991CB3 /* Assets.xcassets */,
 				867DF360212CF6A300991CB3 /* Main.storyboard */,
 				867DF365212CF6A300991CB3 /* LaunchScreen.storyboard */,
@@ -75,13 +75,13 @@
 			path = knoxdevs;
 			sourceTree = "<group>";
 		};
-		86AC41B7213343D1002E73E5 /* Controllers */ = {
+		86AC41B7213343D1002E73E5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				867DF36E212CF73100991CB3 /* GroupsTableViewController.swift */,
 				867DF370212CF86C00991CB3 /* GroupViewController.swift */,
 			);
-			path = Controllers;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		86AC41B821334400002E73E5 /* Models */ = {

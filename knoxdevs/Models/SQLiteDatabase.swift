@@ -20,7 +20,7 @@ class SQLiteDatabase {
     
     func open() throws {
         guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
-            throw SQLiteError.Path(message: "Error with path to database file.")
+            throw SQLiteError.Path(message: "Error with path to sqlite database file.")
         }
         if sqlite3_open(path, &db) != SQLITE_OK {
             throw SQLiteError.Open(message: "Error opening sqlite database.")

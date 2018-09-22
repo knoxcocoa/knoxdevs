@@ -9,6 +9,7 @@
 import Foundation
 
 struct Organizer {
+    let id: Int64
     let name: String
     let twitter: String
     let github: String
