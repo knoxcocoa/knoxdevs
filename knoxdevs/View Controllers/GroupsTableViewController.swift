@@ -40,8 +40,13 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
         } catch {
             print("Unexpected error.")
         }
+        
         guard let allGroups = sqlitedb.allGroups() else { return }
         groups = allGroups
+        
+        // test organizer query
+        guard let organizer = sqlitedb.getOrganizer(name: "Gavin Wiggins") else { return }
+        print(organizer)
     }
 
     // MARK: - Table view data source

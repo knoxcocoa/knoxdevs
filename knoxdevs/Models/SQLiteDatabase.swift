@@ -58,5 +58,37 @@ class SQLiteDatabase {
         }
     }
     
+    func getOrganizer(name: String) -> Organizer? {
+        
+        let queryStatement = "SELECT * FROM organizers WHERE name LIKE \"\(name)\";"
+        print(queryStatement)
+        var queryOut: OpaquePointer? = nil
+        
+        defer { sqlite3_finalize(queryOut) }
+        
+        if sqlite3_prepare_v2(db, queryStatement, -1, &queryOut, nil) == SQLITE_OK {
+            
+            var organizers = [Organizer]()
+            
+            while sqlite3_step(queryOut) == SQLITE_ROW {
+                let id = sqlite3_column_int64(queryOut, 0)
+                
+                let nameText = sqlite3_column_text(queryOut, 1)
+                let name = String(cString: nameText!)
+                
+                let twitterText = sqlite3_column_text(queryOut, 2)
+                let twitter = String(cString: twitterText!)
+                
+                let githubText = sqlite3_column_text(queryOut, 3)
+                let github = String(cString: githubText!)
+                
+                let organizer = Organizer(id: id, name: name, twitter: twitter, github: github)
+                organizers.append(organizer)
+            }
+            return organizers[0]
+        } else {
+            return nil
+        }
+    }
     
 }

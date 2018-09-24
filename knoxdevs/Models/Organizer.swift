@@ -13,5 +13,4 @@ struct Organizer {
     let name: String
     let twitter: String
     let github: String
-    let groups: [String]
 }
