@@ -8,29 +8,56 @@
 
 import UIKit
 
-class GroupViewController: UIViewController {
+class GroupViewController: UITableViewController {
     
-    @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var groupImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var tagsLabel: UILabel!
+    
+    let headers = ["Description", "Organizers"]
     
     var group: Group? {
         didSet {
-            updateUI()
+            updateTopView()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-    func updateUI() {
+    func updateTopView() {
         loadViewIfNeeded()
         if let group = group {
-            itemLabel.text = group.name
-            descriptionLabel.text = group.desc
+            groupImageView.image = UIImage(named: "people")
+            nameLabel.text = group.name
+            tagsLabel.text = group.tags
         }
+    }
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return headers.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return headers[section]
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 1
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath)
+        cell.textLabel?.text = group?.desc
+        return cell
     }
 
 }
