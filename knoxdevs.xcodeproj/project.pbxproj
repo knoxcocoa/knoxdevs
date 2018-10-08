@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */; };
 		867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DF35C212CF6A300991CB3 /* AppDelegate.swift */; };
 		867DF362212CF6A300991CB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867DF360212CF6A300991CB3 /* Main.storyboard */; };
 		867DF364212CF6A300991CB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867DF363212CF6A300991CB3 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		867DF359212CF6A300991CB3 /* knoxdevs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knoxdevs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867DF35C212CF6A300991CB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867DF361212CF6A300991CB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8612EEF2216A8FE0005A3286 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		867DF350212CF6A300991CB3 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +76,7 @@
 			children = (
 				867DF35C212CF6A300991CB3 /* AppDelegate.swift */,
 				86AC41B821334400002E73E5 /* Models */,
+				8612EEF2216A8FE0005A3286 /* View Models */,
 				86AC41B7213343D1002E73E5 /* View Controllers */,
 				867DF363212CF6A300991CB3 /* Assets.xcassets */,
 				867DF360212CF6A300991CB3 /* Main.storyboard */,
@@ -168,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				867DF371212CF86C00991CB3 /* GroupViewController.swift in Sources */,
+				8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */,
 				867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */,
 				86AC41C621334D1D002E73E5 /* SQLiteDatabase.swift in Sources */,
 				86AC41BE21334481002E73E5 /* Organizer.swift in Sources */,

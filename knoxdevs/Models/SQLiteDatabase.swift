@@ -27,7 +27,14 @@ class SQLiteDatabase {
         }
     }
     
-    func allGroups() -> [Group]? {
+    private func getString(from sqlText: UnsafePointer<UInt8>?) -> String? {
+        guard let cString = sqlText else {
+            return nil
+        }
+        return String(cString: cString)
+    }
+    
+    func allGroups() -> [GroupViewModel]? {
         
         let queryStatementString = "SELECT * FROM groups;"
         var queryStatement: OpaquePointer? = nil
@@ -35,7 +42,7 @@ class SQLiteDatabase {
         defer { sqlite3_finalize(queryStatement) }
         
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
-            var groups = [Group]()
+            var groups = [GroupViewModel]()
             
             while sqlite3_step(queryStatement) == SQLITE_ROW {
                 let id = sqlite3_column_int64(queryStatement, 0)
@@ -46,11 +53,35 @@ class SQLiteDatabase {
                 let tagsText = sqlite3_column_text(queryStatement, 2)
                 let tags = String(cString: tagsText!)
                 
-                let descText = sqlite3_column_text(queryStatement, 8)
-                let desc = String(cString: descText!)
+                let websiteText = sqlite3_column_text(queryStatement, 3)
+                let website = getString(from: websiteText)
                 
-                let group = Group(id: id, name: name, tags: tags, desc: desc)
-                groups.append(group)
+                let emailText = sqlite3_column_text(queryStatement, 4)
+                let email = getString(from: emailText)
+                
+                let githubText = sqlite3_column_text(queryStatement, 5)
+                let github = getString(from: githubText)
+                
+                let twitterText = sqlite3_column_text(queryStatement, 6)
+                let twitter = getString(from: twitterText)
+                
+                let meetupText = sqlite3_column_text(queryStatement, 7)
+                let meetup = getString(from: meetupText)
+                
+                let descriptionText = sqlite3_column_text(queryStatement, 8)
+                let desc = String(cString: descriptionText!)
+                
+                let locationText = sqlite3_column_text(queryStatement, 9)
+                let loc = String(cString: locationText!)
+                
+                let organizersText = sqlite3_column_text(queryStatement, 10)
+                let orgs = String(cString: organizersText!)
+                
+                let group = Group(id: id, name: name, tags: tags, website: website, email: email,
+                                  github: github, twitter: twitter, meetup: meetup,
+                                  description: desc, location: loc, organizers: orgs)
+                let groupVM = GroupViewModel(group: group)
+                groups.append(groupVM)
             }
             return groups
         } else {

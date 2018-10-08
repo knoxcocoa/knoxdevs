@@ -12,5 +12,12 @@ struct Group {
     let id: Int64
     let name: String
     let tags: String
-    let desc: String
+    let website: String?
+    let email: String?
+    let github: String?
+    let twitter: String?
+    let meetup: String?
+    let description: String
+    let location: String
+    let organizers: String
 }

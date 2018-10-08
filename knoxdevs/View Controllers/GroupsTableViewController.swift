@@ -13,8 +13,8 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
     let sqlitedb = SQLiteDatabase()
     let searchController = UISearchController(searchResultsController: nil)
 
-    var groups = [Group]()
-    var groupsFiltered = [Group]()
+    var groups = [GroupViewModel]()
+    var groupsFiltered = [GroupViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +64,7 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
-        let group: Group
+        let group: GroupViewModel
         if isFiltering() {
             group = groupsFiltered[indexPath.row]
         } else {
@@ -114,7 +114,7 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GroupSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let group: Group
+                let group: GroupViewModel
                 if isFiltering() {
                     group = groupsFiltered[indexPath.row]
                 } else {
