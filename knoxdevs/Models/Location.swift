@@ -11,8 +11,8 @@ import Foundation
 struct Location {
     let id: Int64
     let name: String
-    let address: String
-    let latitude: Float
-    let longitude: Float
-    let website: String
+    let address: String?
+    let latitude: Double?
+    let longitude: Double?
+    let website: String?
 }

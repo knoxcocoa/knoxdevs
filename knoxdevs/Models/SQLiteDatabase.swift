@@ -38,7 +38,6 @@ class SQLiteDatabase {
         
         let queryStatementString = "SELECT * FROM groups;"
         var queryStatement: OpaquePointer? = nil
-        
         defer { sqlite3_finalize(queryStatement) }
         
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
@@ -93,11 +92,9 @@ class SQLiteDatabase {
         
         let queryStatement = "SELECT * FROM organizers WHERE name LIKE \"\(name)\";"
         var queryOut: OpaquePointer? = nil
-        
         defer { sqlite3_finalize(queryOut) }
         
         if sqlite3_prepare_v2(db, queryStatement, -1, &queryOut, nil) == SQLITE_OK {
-            
             var organizers = [Organizer]()
             
             while sqlite3_step(queryOut) == SQLITE_ROW {
@@ -121,4 +118,37 @@ class SQLiteDatabase {
         }
     }
     
+    func getLocation(name: String) -> Location? {
+        let queryStatement = "SELECT * FROM locations WHERE name LIKE \"\(name)\";"
+        var queryOut: OpaquePointer? = nil
+        defer { sqlite3_finalize(queryOut) }
+        var location: Location
+
+        if sqlite3_prepare_v2(db, queryStatement, -1, &queryOut, nil) == SQLITE_OK {
+            
+            if sqlite3_step(queryOut) == SQLITE_ROW {
+                let id = sqlite3_column_int64(queryOut, 0)
+                
+                let nameText = sqlite3_column_text(queryOut, 1)
+                let name = String(cString: nameText!)
+                
+                let addressText = sqlite3_column_text(queryOut, 2)
+                let address = getString(from: addressText)
+                
+                let lat = sqlite3_column_double(queryOut, 3)
+                let lon = sqlite3_column_double(queryOut, 4)
+                
+                let websiteText = sqlite3_column_text(queryOut, 5)
+                let website = getString(from: websiteText)
+                
+                location = Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
+                return location
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+
 }

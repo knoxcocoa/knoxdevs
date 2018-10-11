@@ -17,7 +17,7 @@ class GroupViewController: UITableViewController {
     
     let headers = ["Description", "Location", "Links", "Organizers", "Contact"]
     var links = [Link]()
-
+    
     var group: GroupViewModel? {
         didSet {
             loadViewIfNeeded()
@@ -31,7 +31,6 @@ class GroupViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: - Table view data source
