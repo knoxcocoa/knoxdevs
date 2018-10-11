@@ -1,21 +1,21 @@
 //
-//  GroupsTableViewController.swift
+//  GroupsViewController.swift
 //  knoxdevs
 //
-//  Created by Gavin on 8/21/18.
+//  Created by Gavin on 10/10/18.
 //  Copyright © 2018 Gavin Wiggins. All rights reserved.
 //
 
 import UIKit
 
-class GroupsTableViewController: UITableViewController, UISplitViewControllerDelegate, UISearchResultsUpdating {
-    
+class GroupsViewController: UITableViewController, UISplitViewControllerDelegate, UISearchResultsUpdating {
+
     let sqlitedb = SQLiteDatabase()
     let searchController = UISearchController(searchResultsController: nil)
-
+    
     var groups = [GroupViewModel]()
     var groupsFiltered = [GroupViewModel]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,25 +43,21 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
         
         guard let allGroups = sqlitedb.allGroups() else { return }
         groups = allGroups
-        
-        // test organizer query
-        guard let organizer = sqlitedb.getOrganizer(name: "Gavin Wiggins") else { return }
-        print(organizer)
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             return groupsFiltered.count
         }
         return groups.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
         let group: GroupViewModel
@@ -108,9 +104,9 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GroupSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {

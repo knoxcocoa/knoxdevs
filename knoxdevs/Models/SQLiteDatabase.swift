@@ -92,7 +92,6 @@ class SQLiteDatabase {
     func getOrganizer(name: String) -> Organizer? {
         
         let queryStatement = "SELECT * FROM organizers WHERE name LIKE \"\(name)\";"
-        print(queryStatement)
         var queryOut: OpaquePointer? = nil
         
         defer { sqlite3_finalize(queryOut) }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class GroupViewController: UITableViewController {
     
@@ -14,21 +15,23 @@ class GroupViewController: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tagsLabel: UILabel!
     
-    let headers = ["Description", "Location", "Links", "Organizers"]
+    let headers = ["Description", "Location", "Links", "Organizers", "Contact"]
     var links = [Link]()
 
     var group: GroupViewModel? {
         didSet {
             loadViewIfNeeded()
-            
             guard let group = group else { return }
-            groupImageView.image = UIImage(named: "people")
+            groupImageView.image = group.image
             nameLabel.text = group.name
             tagsLabel.text = group.tags
-            
-            guard let links = group.links else { return }
-            self.links = links
+            links = group.links
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        tableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: - Table view data source
@@ -45,14 +48,21 @@ class GroupViewController: UITableViewController {
         guard let group = group else { return 1 }
         
         switch section {
-        case 0: // description section
+        case 0:
+            // description section
             return 1
-        case 1: // location section
+        case 1:
+            // location section
             return 1
-        case 2: // links section
+        case 2:
+            // links section
             return links.count
-        case 3: // organizers section
+        case 3:
+            // organizers section
             return group.organizers.count
+        case 4:
+            // contact section
+            return 1
         default:
             return 1
         }
@@ -67,22 +77,37 @@ class GroupViewController: UITableViewController {
         }
         
         switch indexPath.section {
-        case 0: // description section
+        case 0:
+            // description section
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
             cell.textLabel?.text = group.description
             return cell
-        case 1: // location section
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
-            cell.textLabel?.text = group.location
+        case 1:
+            // location section
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationTableViewCell
+            cell.locationLabel.text = group.location
             return cell
-        case 2: // links section
+        case 2:
+            // links section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath)
             cell.imageView?.image = UIImage(named: links[indexPath.row].type.rawValue)
             cell.textLabel?.text = links[indexPath.row].handle
             return cell
-        case 3: // organizers section
+        case 3:
+            // organizers section
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
             cell.textLabel?.text = group.organizers[indexPath.row]
+            return cell
+        case 4:
+            // contact section
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmailCell", for: indexPath)
+            guard let email = group.email else {
+                cell.textLabel?.text = "Email address not available"
+                cell.selectionStyle = .none
+                cell.accessoryType = .none
+                return cell
+            }
+            cell.textLabel?.text = email
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
@@ -92,10 +117,27 @@ class GroupViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 {
+        switch indexPath.section {
+        case 2:
+            // links section
             let url = links[indexPath.row].url
+            let svc = SFSafariViewController(url: url)
+            present(svc, animated: true, completion: nil)
+        case 4:
+            // contact section
+            guard let email = group?.email else { return }
+            guard let url = URL(string: "mailto:\(email)") else { return }
             UIApplication.shared.open(url)
+        default:
+            return
         }
     }
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if indexPath.section == 1 {
+//            return 200
+//        }
+//        return uitableviewautomatic
+//    }
 
 }

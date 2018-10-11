@@ -12,8 +12,10 @@
 		867DF362212CF6A300991CB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867DF360212CF6A300991CB3 /* Main.storyboard */; };
 		867DF364212CF6A300991CB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867DF363212CF6A300991CB3 /* Assets.xcassets */; };
 		867DF367212CF6A300991CB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867DF365212CF6A300991CB3 /* LaunchScreen.storyboard */; };
-		867DF36F212CF73100991CB3 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DF36E212CF73100991CB3 /* GroupsTableViewController.swift */; };
 		867DF371212CF86C00991CB3 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DF370212CF86C00991CB3 /* GroupViewController.swift */; };
+		8684972E216EBF1A00FFA599 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684972D216EBF1A00FFA599 /* GroupsViewController.swift */; };
+		86849730216EC32600FFA599 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684972F216EC32600FFA599 /* LocationTableViewCell.swift */; };
+		86849733216ED0DC00FFA599 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86849732216ED0DC00FFA599 /* Location.swift */; };
 		86AC41BC21334447002E73E5 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC41BB21334447002E73E5 /* Group.swift */; };
 		86AC41BE21334481002E73E5 /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC41BD21334481002E73E5 /* Organizer.swift */; };
 		86AC41C021334ACF002E73E5 /* knoxdevs.db in Resources */ = {isa = PBXBuildFile; fileRef = 86AC41BF21334ACF002E73E5 /* knoxdevs.db */; };
@@ -28,8 +30,10 @@
 		867DF363212CF6A300991CB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867DF366212CF6A300991CB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		867DF368212CF6A300991CB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		867DF36E212CF73100991CB3 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		867DF370212CF86C00991CB3 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		8684972D216EBF1A00FFA599 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		8684972F216EC32600FFA599 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		86849732216ED0DC00FFA599 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		86AC41BB21334447002E73E5 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		86AC41BD21334481002E73E5 /* Organizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		86AC41BF21334ACF002E73E5 /* knoxdevs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = knoxdevs.db; sourceTree = "<group>"; };
@@ -75,21 +79,30 @@
 			isa = PBXGroup;
 			children = (
 				867DF35C212CF6A300991CB3 /* AppDelegate.swift */,
+				867DF368212CF6A300991CB3 /* Info.plist */,
 				86AC41B821334400002E73E5 /* Models */,
 				8612EEF2216A8FE0005A3286 /* View Models */,
 				86AC41B7213343D1002E73E5 /* View Controllers */,
-				867DF363212CF6A300991CB3 /* Assets.xcassets */,
-				867DF360212CF6A300991CB3 /* Main.storyboard */,
-				867DF365212CF6A300991CB3 /* LaunchScreen.storyboard */,
-				867DF368212CF6A300991CB3 /* Info.plist */,
+				86849731216ECEC600FFA599 /* Views */,
 			);
 			path = knoxdevs;
+			sourceTree = "<group>";
+		};
+		86849731216ECEC600FFA599 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				867DF363212CF6A300991CB3 /* Assets.xcassets */,
+				867DF365212CF6A300991CB3 /* LaunchScreen.storyboard */,
+				8684972F216EC32600FFA599 /* LocationTableViewCell.swift */,
+				867DF360212CF6A300991CB3 /* Main.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		86AC41B7213343D1002E73E5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				867DF36E212CF73100991CB3 /* GroupsTableViewController.swift */,
+				8684972D216EBF1A00FFA599 /* GroupsViewController.swift */,
 				867DF370212CF86C00991CB3 /* GroupViewController.swift */,
 			);
 			path = "View Controllers";
@@ -99,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				86AC41BB21334447002E73E5 /* Group.swift */,
+				86849732216ED0DC00FFA599 /* Location.swift */,
 				86AC41BD21334481002E73E5 /* Organizer.swift */,
 				86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */,
 				86AC41BF21334ACF002E73E5 /* knoxdevs.db */,
@@ -181,10 +195,12 @@
 				867DF371212CF86C00991CB3 /* GroupViewController.swift in Sources */,
 				8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */,
 				867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */,
+				86849730216EC32600FFA599 /* LocationTableViewCell.swift in Sources */,
+				86849733216ED0DC00FFA599 /* Location.swift in Sources */,
 				86AC41C621334D1D002E73E5 /* SQLiteDatabase.swift in Sources */,
 				86AC41BE21334481002E73E5 /* Organizer.swift in Sources */,
-				867DF36F212CF73100991CB3 /* GroupsTableViewController.swift in Sources */,
 				86AC41BC21334447002E73E5 /* Group.swift in Sources */,
+				8684972E216EBF1A00FFA599 /* GroupsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
