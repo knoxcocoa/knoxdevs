@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SafariServices
 
 class LocationTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var locationLabel: UILabel!
 
     override func awakeFromNib() {
@@ -19,7 +20,6 @@ class LocationTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

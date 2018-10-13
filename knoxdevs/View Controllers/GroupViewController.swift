@@ -102,7 +102,7 @@ class GroupViewController: UITableViewController {
         case 2:
             // location section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationTableViewCell
-            cell.locationLabel.text = location.name
+            cell.locationLabel.text = location.description
             return cell
         case 3:
             // links section
@@ -135,11 +135,16 @@ class GroupViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
+        case 2:
+            // location section
+            guard let url = location?.website else { return }
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
         case 3:
             // links section
             let url = links[indexPath.row].url
-            let svc = SFSafariViewController(url: url)
-            present(svc, animated: true, completion: nil)
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
         case 5:
             // contact section
             guard let email = group?.email else { return }
