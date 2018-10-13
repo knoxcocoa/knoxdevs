@@ -169,38 +169,39 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="302" id="Kfk-dv-HgM" customClass="LocationTableViewCell" customModule="knoxdevs" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="428.5" width="375" height="302"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="290" id="Kfk-dv-HgM" customClass="LocationTableViewCell" customModule="knoxdevs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="428.5" width="375" height="290"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kfk-dv-HgM" id="32N-3Z-mt6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="289.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label for the location name, location address, and location latitude and longitude for the meetup." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syi-4Q-cTP">
-                                            <rect key="frame" x="16" y="224" width="343" height="61"/>
-                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label for the location name, location address, and location latitude and longitude for the meetup if group has a location." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syi-4Q-cTP">
+                                            <rect key="frame" x="16" y="224" width="343" height="54"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jhm-Na-O2y">
                                             <rect key="frame" x="16" y="16" width="343" height="200"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="200" id="SWs-2b-eY1"/>
+                                                <constraint firstAttribute="height" constant="200" id="WDj-zS-cVG"/>
                                             </constraints>
                                         </mapView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="leading" secondItem="32N-3Z-mt6" secondAttribute="leadingMargin" id="9cK-mH-pWq"/>
-                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="top" secondItem="32N-3Z-mt6" secondAttribute="topMargin" constant="5" id="Dcp-Uc-93t"/>
-                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="trailing" secondItem="32N-3Z-mt6" secondAttribute="trailingMargin" id="IOP-OF-XhR"/>
-                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="top" secondItem="jhm-Na-O2y" secondAttribute="bottom" constant="8" id="bbV-dK-Ril"/>
-                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="trailing" secondItem="32N-3Z-mt6" secondAttribute="trailingMargin" id="eGv-x6-qSw"/>
-                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="leading" secondItem="32N-3Z-mt6" secondAttribute="leadingMargin" id="z2A-29-NDq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="jhm-Na-O2y" secondAttribute="bottom" constant="75" id="zg9-i8-Lrl"/>
+                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="leading" secondItem="32N-3Z-mt6" secondAttribute="leadingMargin" id="AgY-4o-YVT"/>
+                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="trailing" secondItem="32N-3Z-mt6" secondAttribute="trailingMargin" id="N0k-co-XJQ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jhm-Na-O2y" secondAttribute="bottom" constant="63" id="QuN-FF-0Zf"/>
+                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="leading" secondItem="32N-3Z-mt6" secondAttribute="leadingMargin" id="Xx1-Rw-CuF"/>
+                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="top" secondItem="32N-3Z-mt6" secondAttribute="topMargin" constant="5" id="dGD-B0-liP"/>
+                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="trailing" secondItem="32N-3Z-mt6" secondAttribute="trailingMargin" id="m1r-WF-8OT"/>
+                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="top" secondItem="jhm-Na-O2y" secondAttribute="bottom" constant="8" id="sgF-9l-Zhp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="locationLabel" destination="syi-4Q-cTP" id="tIK-Ez-UxG"/>
+                                    <outlet property="mapView" destination="jhm-Na-O2y" id="nVB-Q9-Ljo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -7,40 +7,34 @@
 //
 
 import Foundation
+import MapKit
 
 struct LocationViewModel {
 
     let id: Int64
     let description: String
-    let latitude: Double
-    let longitude: Double
-    let website: URL?
+    let region: MKCoordinateRegion
+    let annotation: MKPointAnnotation
+    let website: URL
 
     init(location: Location) {
         self.id = location.id
-        var desc: String = location.name
         
-        if let address = location.address {
-            desc.append("\n\(address)")
-        } else {
-            desc.append("\nKnoxville, TN")
-        }
-        
-        if let lat = location.latitude, let lon = location.longitude {
-            desc.append("\n\(lat), \(lon)")
-            self.latitude = lat
-            self.longitude = lon
-        } else {
-            desc.append("\n\(35.972778), \(-83.942222)")
-            self.latitude = 35.972778
-            self.longitude = -83.942222
-        }
+        let lat = location.latitude
+        let lon = location.longitude
+        let desc = "\(location.name)\n\(location.address)\n\(lat), \(lon)"
         self.description = desc
         
-        if let web = location.website, let url = URL(string: web) {
-            self.website = url
-        } else {
-            self.website = nil
-        }
+        var region = MKCoordinateRegion()
+        region.center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        region.span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        self.region = region
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        self.annotation = annotation
+        
+        let url = URL(string: location.website)
+        self.website = url!
     }
 }

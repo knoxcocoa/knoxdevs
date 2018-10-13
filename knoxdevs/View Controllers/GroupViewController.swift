@@ -56,23 +56,17 @@ class GroupViewController: UITableViewController {
         
         switch section {
         case 0:
-            // banner section
-            return 1
+            return 1    // banner section
         case 1:
-            // description section
-            return 1
+            return 1    // description section
         case 2:
-            // location section
-            return 1
+            return 1    // location section
         case 3:
-            // links section
-            return links.count
+            return links.count  // links section
         case 4:
-            // organizers section
-            return group.organizers.count
+            return group.organizers.count   // organizers section
         case 5:
-            // contact section
-            return 1
+            return 1    // contact section
         default:
             return 1
         }
@@ -102,6 +96,8 @@ class GroupViewController: UITableViewController {
         case 2:
             // location section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationTableViewCell
+            cell.mapView.setRegion(location.region, animated: true)
+            cell.mapView.addAnnotation(location.annotation)
             cell.locationLabel.text = location.description
             return cell
         case 3:
@@ -155,11 +151,4 @@ class GroupViewController: UITableViewController {
         }
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.section == 1 {
-//            return 200
-//        }
-//        return uitableviewautomatic
-//    }
-
 }

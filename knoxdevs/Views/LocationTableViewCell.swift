@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import SafariServices
+import MapKit
 
 class LocationTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationLabel: UILabel!
 
     override func awakeFromNib() {
