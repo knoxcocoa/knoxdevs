@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */; };
+		864126E2216F060A0016BECD /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864126E1216F060A0016BECD /* LocationViewModel.swift */; };
 		867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DF35C212CF6A300991CB3 /* AppDelegate.swift */; };
 		867DF362212CF6A300991CB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867DF360212CF6A300991CB3 /* Main.storyboard */; };
 		867DF364212CF6A300991CB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867DF363212CF6A300991CB3 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 		8684972E216EBF1A00FFA599 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684972D216EBF1A00FFA599 /* GroupsViewController.swift */; };
 		86849730216EC32600FFA599 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684972F216EC32600FFA599 /* LocationTableViewCell.swift */; };
 		86849733216ED0DC00FFA599 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86849732216ED0DC00FFA599 /* Location.swift */; };
+		869FEC35217246ED00CA60FC /* BannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869FEC34217246ED00CA60FC /* BannerTableViewCell.swift */; };
 		86AC41BC21334447002E73E5 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC41BB21334447002E73E5 /* Group.swift */; };
 		86AC41BE21334481002E73E5 /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC41BD21334481002E73E5 /* Organizer.swift */; };
 		86AC41C021334ACF002E73E5 /* knoxdevs.db in Resources */ = {isa = PBXBuildFile; fileRef = 86AC41BF21334ACF002E73E5 /* knoxdevs.db */; };
@@ -24,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		864126E1216F060A0016BECD /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		867DF359212CF6A300991CB3 /* knoxdevs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knoxdevs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867DF35C212CF6A300991CB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867DF361212CF6A300991CB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		8684972D216EBF1A00FFA599 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		8684972F216EC32600FFA599 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		86849732216ED0DC00FFA599 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		869FEC34217246ED00CA60FC /* BannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCell.swift; sourceTree = "<group>"; };
 		86AC41BB21334447002E73E5 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		86AC41BD21334481002E73E5 /* Organizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		86AC41BF21334ACF002E73E5 /* knoxdevs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = knoxdevs.db; sourceTree = "<group>"; };
@@ -55,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */,
+				864126E1216F060A0016BECD /* LocationViewModel.swift */,
+				86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -92,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				867DF363212CF6A300991CB3 /* Assets.xcassets */,
+				869FEC34217246ED00CA60FC /* BannerTableViewCell.swift */,
 				867DF365212CF6A300991CB3 /* LaunchScreen.storyboard */,
 				8684972F216EC32600FFA599 /* LocationTableViewCell.swift */,
 				867DF360212CF6A300991CB3 /* Main.storyboard */,
@@ -114,7 +121,6 @@
 				86AC41BB21334447002E73E5 /* Group.swift */,
 				86849732216ED0DC00FFA599 /* Location.swift */,
 				86AC41BD21334481002E73E5 /* Organizer.swift */,
-				86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */,
 				86AC41BF21334ACF002E73E5 /* knoxdevs.db */,
 			);
 			path = Models;
@@ -192,9 +198,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				869FEC35217246ED00CA60FC /* BannerTableViewCell.swift in Sources */,
 				867DF371212CF86C00991CB3 /* GroupViewController.swift in Sources */,
 				8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */,
 				867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */,
+				864126E2216F060A0016BECD /* LocationViewModel.swift in Sources */,
 				86849730216EC32600FFA599 /* LocationTableViewCell.swift in Sources */,
 				86849733216ED0DC00FFA599 /* Location.swift in Sources */,
 				86AC41C621334D1D002E73E5 /* SQLiteDatabase.swift in Sources */,

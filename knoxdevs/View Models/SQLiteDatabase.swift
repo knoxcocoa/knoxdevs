@@ -118,11 +118,10 @@ class SQLiteDatabase {
         }
     }
     
-    func getLocation(name: String) -> Location? {
+    func getLocation(name: String) -> LocationViewModel? {
         let queryStatement = "SELECT * FROM locations WHERE name LIKE \"\(name)\";"
         var queryOut: OpaquePointer? = nil
         defer { sqlite3_finalize(queryOut) }
-        var location: Location
 
         if sqlite3_prepare_v2(db, queryStatement, -1, &queryOut, nil) == SQLITE_OK {
             
@@ -141,7 +140,9 @@ class SQLiteDatabase {
                 let websiteText = sqlite3_column_text(queryOut, 5)
                 let website = getString(from: websiteText)
                 
-                location = Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
+                let loc = Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
+                let location = LocationViewModel(location: loc)
+                
                 return location
             } else {
                 return nil
@@ -150,5 +151,4 @@ class SQLiteDatabase {
             return nil
         }
     }
-
 }

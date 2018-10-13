@@ -11,21 +11,29 @@ import SafariServices
 
 class GroupViewController: UITableViewController {
     
-    @IBOutlet weak var groupImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var tagsLabel: UILabel!
-    
-    let headers = ["Description", "Location", "Links", "Organizers", "Contact"]
+    let sqlitedb = SQLiteDatabase()
+    let headers = ["Banner", "Description", "Location", "Links", "Organizers", "Contact"]
     var links = [Link]()
+    var location: LocationViewModel?
     
     var group: GroupViewModel? {
         didSet {
             loadViewIfNeeded()
             guard let group = group else { return }
-            groupImageView.image = group.image
-            nameLabel.text = group.name
-            tagsLabel.text = group.tags
-            links = group.links
+            self.links = group.links
+            
+            // open sqlite database and get location for group
+            do {
+                try sqlitedb.open()
+            } catch SQLiteError.Path(let message) {
+                print("\(message)")
+            } catch SQLiteError.Open(let message) {
+                print("\(message)")
+            } catch {
+                print("Unexpected error.")
+            }
+            guard let location = sqlitedb.getLocation(name: group.location) else { return }
+            self.location = location
         }
     }
     
@@ -48,18 +56,21 @@ class GroupViewController: UITableViewController {
         
         switch section {
         case 0:
-            // description section
+            // banner section
             return 1
         case 1:
-            // location section
+            // description section
             return 1
         case 2:
+            // location section
+            return 1
+        case 3:
             // links section
             return links.count
-        case 3:
+        case 4:
             // organizers section
             return group.organizers.count
-        case 4:
+        case 5:
             // contact section
             return 1
         default:
@@ -69,7 +80,7 @@ class GroupViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let group = group else {
+        guard let group = group, let location = location else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
             cell.textLabel?.text = "none"
             return cell
@@ -77,27 +88,34 @@ class GroupViewController: UITableViewController {
         
         switch indexPath.section {
         case 0:
+            // banner section
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell", for: indexPath) as! BannerTableViewCell
+            cell.bannerImageView.image = group.image
+            cell.groupName.text = group.name
+            cell.groupTags.text = group.tags
+            return cell
+        case 1:
             // description section
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
             cell.textLabel?.text = group.description
             return cell
-        case 1:
+        case 2:
             // location section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationTableViewCell
-            cell.locationLabel.text = group.location
+            cell.locationLabel.text = location.name
             return cell
-        case 2:
+        case 3:
             // links section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath)
             cell.imageView?.image = UIImage(named: links[indexPath.row].type.rawValue)
             cell.textLabel?.text = links[indexPath.row].handle
             return cell
-        case 3:
+        case 4:
             // organizers section
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
             cell.textLabel?.text = group.organizers[indexPath.row]
             return cell
-        case 4:
+        case 5:
             // contact section
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmailCell", for: indexPath)
             guard let email = group.email else {
@@ -117,12 +135,12 @@ class GroupViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 2:
+        case 3:
             // links section
             let url = links[indexPath.row].url
             let svc = SFSafariViewController(url: url)
             present(svc, animated: true, completion: nil)
-        case 4:
+        case 5:
             // contact section
             guard let email = group?.email else { return }
             guard let url = URL(string: "mailto:\(email)") else { return }

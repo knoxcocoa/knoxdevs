@@ -40,7 +40,6 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         } catch {
             print("Unexpected error.")
         }
-        
         guard let allGroups = sqlitedb.allGroups() else { return }
         groups = allGroups
     }
