@@ -24,27 +24,27 @@ struct Link {
 }
 
 struct GroupViewModel {
-    let id: Int64
+
     let name: String
     let tags: String
     let description: String
     let links: [Link]
     let email: String?
     let location: String
-    let organizers: [String]
-    let image: UIImage?
-    
+    let organizers: [OrganizerViewModel]
+    let banner: UIImage
+
+    private static let sqlitedb = SQLiteDatabase()
+
     init(group: Group) {
-        self.id = group.id
         self.name = group.name
         self.tags = group.tags
         self.description = group.description
         self.links = GroupViewModel.getLinks(group: group)
         self.email = group.email
         self.location = group.location
-        let org = group.organizers
-        self.organizers = org.components(separatedBy: ", ")
-        self.image = GroupViewModel.getImage(name: group.name)
+        self.organizers = GroupViewModel.getOrganizers(group: group)
+        self.banner = GroupViewModel.getImage(name: group.name)
     }
     
     private static func getLinks(group: Group) -> [Link] {
@@ -72,14 +72,42 @@ struct GroupViewModel {
         return links
     }
     
-    private static func getImage(name: String) -> UIImage? {
+    private static func getOrganizers(group: Group) -> [OrganizerViewModel] {
+        let names = group.organizers.components(separatedBy: ", ")
+        
+        do {
+            try sqlitedb.open()
+        } catch SQLiteError.Path(let message) {
+            print("\(message)")
+        } catch SQLiteError.Open(let message) {
+            print("\(message)")
+        } catch {
+            print("Unexpected error.")
+        }
+        
+        var organizersVM = [OrganizerViewModel]()
+        
+        for n in names {
+            if let organizer = sqlitedb.getOrganizer(name: n) {
+                let orgvm = OrganizerViewModel(organizer: organizer)
+                organizersVM.append(orgvm)
+            } else {
+                let org = Organizer(id: 0, name: "Cold Beer", twitter: nil, github: nil, website: nil)
+                let orgvm = OrganizerViewModel(organizer: org)
+                organizersVM.append(orgvm)
+            }
+        }
+        return organizersVM
+    }
+    
+    private static func getImage(name: String) -> UIImage {
         switch name {
         case "DC 865":
-            return UIImage(named: "dc865")
+            return UIImage(named: "dc865")!
         case "KnoxPy":
-            return UIImage(named: "knoxpy")
+            return UIImage(named: "knoxpy")!
         default:
-            return UIImage(named: "groups")
+            return UIImage(named: "groups")!
         }
     }
 }

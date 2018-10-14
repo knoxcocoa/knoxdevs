@@ -12,7 +12,7 @@ import SafariServices
 class GroupViewController: UITableViewController {
     
     let sqlitedb = SQLiteDatabase()
-    let headers = ["Banner", "Description", "Location", "Links", "Organizers", "Contact"]
+    let headers = ["", "Description", "Location", "Links", "Organizers", "Contact"]
     var links = [Link]()
     var location: LocationViewModel?
     
@@ -84,7 +84,7 @@ class GroupViewController: UITableViewController {
         case 0:
             // banner section
             let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell", for: indexPath) as! BannerTableViewCell
-            cell.bannerImageView.image = group.image
+            cell.bannerImageView.image = group.banner
             cell.groupName.text = group.name
             cell.groupTags.text = group.tags
             return cell
@@ -96,9 +96,11 @@ class GroupViewController: UITableViewController {
         case 2:
             // location section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationTableViewCell
+            cell.parentVC = self
             cell.mapView.setRegion(location.region, animated: true)
             cell.mapView.addAnnotation(location.annotation)
             cell.locationLabel.text = location.description
+            cell.locationUrl = location.website
             return cell
         case 3:
             // links section
@@ -108,8 +110,14 @@ class GroupViewController: UITableViewController {
             return cell
         case 4:
             // organizers section
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
-            cell.textLabel?.text = group.organizers[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizerCell", for: indexPath) as! OrganizerTableViewCell
+            let organizer = group.organizers[indexPath.row]
+            cell.parentVC = self
+            cell.organizerIcon.image = organizer.icon
+            cell.organizerLabel.text = organizer.name
+            cell.configureGithub(for: organizer.github)
+            cell.configureTwitter(for: organizer.twitter)
+            cell.configureWebsite(for: organizer.website)
             return cell
         case 5:
             // contact section
@@ -131,11 +139,6 @@ class GroupViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 2:
-            // location section
-            guard let url = location?.website else { return }
-            let safariVC = SFSafariViewController(url: url)
-            present(safariVC, animated: true, completion: nil)
         case 3:
             // links section
             let url = links[indexPath.row].url

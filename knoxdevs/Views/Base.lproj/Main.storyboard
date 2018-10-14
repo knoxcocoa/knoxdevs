@@ -148,8 +148,118 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="327" id="Kfk-dv-HgM" customClass="LocationTableViewCell" customModule="knoxdevs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="384.5" width="375" height="327"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kfk-dv-HgM" id="32N-3Z-mt6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="326.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label for the location name, location address, and location latitude and longitude for the meetup if group has a location." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syi-4Q-cTP">
+                                            <rect key="frame" x="16" y="224" width="343" height="54"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jhm-Na-O2y">
+                                            <rect key="frame" x="16" y="16" width="343" height="200"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="Vwc-D8-IoD"/>
+                                            </constraints>
+                                        </mapView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKT-RY-xoE">
+                                            <rect key="frame" x="142.5" y="286" width="90" height="30"/>
+                                            <state key="normal" title="View website"/>
+                                            <connections>
+                                                <action selector="showWebsite:" destination="Kfk-dv-HgM" eventType="touchUpInside" id="coi-pg-Apq"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="leading" secondItem="32N-3Z-mt6" secondAttribute="leadingMargin" id="BXh-NM-gzy"/>
+                                        <constraint firstItem="TKT-RY-xoE" firstAttribute="centerX" secondItem="32N-3Z-mt6" secondAttribute="centerX" id="Xax-0V-tKg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jhm-Na-O2y" secondAttribute="bottom" constant="100" id="YIa-W8-dxp"/>
+                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="trailing" secondItem="32N-3Z-mt6" secondAttribute="trailingMargin" id="iKm-cO-rF7"/>
+                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="top" secondItem="jhm-Na-O2y" secondAttribute="bottom" constant="8" id="jaV-Tx-Bpl"/>
+                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="top" secondItem="32N-3Z-mt6" secondAttribute="topMargin" constant="5" id="k77-7A-tlu"/>
+                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="trailing" secondItem="32N-3Z-mt6" secondAttribute="trailingMargin" id="o2k-zI-Glj"/>
+                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="leading" secondItem="32N-3Z-mt6" secondAttribute="leadingMargin" id="oSG-cz-cgL"/>
+                                        <constraint firstItem="TKT-RY-xoE" firstAttribute="top" secondItem="syi-4Q-cTP" secondAttribute="bottom" constant="8" id="qRK-SU-AuO"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="locationLabel" destination="syi-4Q-cTP" id="tIK-Ez-UxG"/>
+                                    <outlet property="mapView" destination="jhm-Na-O2y" id="nVB-Q9-Ljo"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrganizerCell" rowHeight="83" id="U2m-F8-Wvf" customClass="OrganizerTableViewCell" customModule="knoxdevs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="711.5" width="375" height="83"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U2m-F8-Wvf" id="zSd-Cd-sEN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organizer name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMS-Lq-qgV">
+                                            <rect key="frame" x="82" y="16" width="277" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKp-gx-Lam">
+                                            <rect key="frame" x="161" y="36" width="48" height="30"/>
+                                            <state key="normal" title="Twitter"/>
+                                            <connections>
+                                                <action selector="showWebsite:" destination="U2m-F8-Wvf" eventType="touchUpInside" id="KYc-ex-O9u"/>
+                                            </connections>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="groups" translatesAutoresizingMaskIntoConstraints="NO" id="0e3-3V-YDe">
+                                            <rect key="frame" x="16" y="16" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="SGU-wk-HbW"/>
+                                                <constraint firstAttribute="width" constant="50" id="Ycd-eP-KDN"/>
+                                            </constraints>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fV-lm-Pc3">
+                                            <rect key="frame" x="82" y="36" width="49" height="30"/>
+                                            <state key="normal" title="GitHub"/>
+                                            <connections>
+                                                <action selector="showWebsite:" destination="U2m-F8-Wvf" eventType="touchUpInside" id="Pjh-Ze-3Ng"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lP0-uM-J0L">
+                                            <rect key="frame" x="239" y="36" width="56" height="30"/>
+                                            <state key="normal" title="Website"/>
+                                            <connections>
+                                                <action selector="showWebsite:" destination="U2m-F8-Wvf" eventType="touchUpInside" id="x7w-H8-JuG"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lP0-uM-J0L" firstAttribute="leading" secondItem="cKp-gx-Lam" secondAttribute="trailing" constant="30" id="0A8-Pj-dSv"/>
+                                        <constraint firstItem="0e3-3V-YDe" firstAttribute="leading" secondItem="zSd-Cd-sEN" secondAttribute="leadingMargin" id="2kt-LB-wHQ"/>
+                                        <constraint firstItem="9fV-lm-Pc3" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="25" id="2z7-WO-26j"/>
+                                        <constraint firstItem="RMS-Lq-qgV" firstAttribute="leading" secondItem="0e3-3V-YDe" secondAttribute="trailing" constant="16" id="Fj0-iL-MWv"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="lP0-uM-J0L" secondAttribute="trailing" constant="64" id="HGy-hx-xbh"/>
+                                        <constraint firstItem="lP0-uM-J0L" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="25" id="J9s-VN-nS9"/>
+                                        <constraint firstItem="cKp-gx-Lam" firstAttribute="leading" secondItem="9fV-lm-Pc3" secondAttribute="trailing" constant="30" id="LLG-4l-4rr"/>
+                                        <constraint firstItem="RMS-Lq-qgV" firstAttribute="trailing" secondItem="zSd-Cd-sEN" secondAttribute="trailingMargin" id="cYv-g0-NvY"/>
+                                        <constraint firstItem="cKp-gx-Lam" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="25" id="dP4-f0-8ns"/>
+                                        <constraint firstItem="0e3-3V-YDe" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="5" id="fPP-0o-CyR"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0e3-3V-YDe" secondAttribute="bottom" constant="6" id="gJp-ZM-6c1"/>
+                                        <constraint firstItem="RMS-Lq-qgV" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="5" id="pbv-0M-WtB"/>
+                                        <constraint firstItem="9fV-lm-Pc3" firstAttribute="leading" secondItem="0e3-3V-YDe" secondAttribute="trailing" constant="16" id="u8k-pQ-LJ3"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="githubButton" destination="9fV-lm-Pc3" id="oZ4-vA-Ngn"/>
+                                    <outlet property="organizerIcon" destination="0e3-3V-YDe" id="gY3-Bp-hmG"/>
+                                    <outlet property="organizerLabel" destination="RMS-Lq-qgV" id="NNg-0a-TdT"/>
+                                    <outlet property="twitterButton" destination="cKp-gx-Lam" id="uD4-sW-MlI"/>
+                                    <outlet property="websiteButton" destination="lP0-uM-J0L" id="fOa-Kf-CLM"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EmailCell" textLabel="iVx-CS-bWV" imageView="dfg-Ke-Jpp" style="IBUITableViewCellStyleDefault" id="2e8-G9-v0i">
-                                <rect key="frame" x="0.0" y="384.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="794.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2e8-G9-v0i" id="nkB-Gm-YUV">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -168,41 +278,6 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="290" id="Kfk-dv-HgM" customClass="LocationTableViewCell" customModule="knoxdevs" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="428.5" width="375" height="290"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kfk-dv-HgM" id="32N-3Z-mt6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="289.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label for the location name, location address, and location latitude and longitude for the meetup if group has a location." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syi-4Q-cTP">
-                                            <rect key="frame" x="16" y="224" width="343" height="54"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jhm-Na-O2y">
-                                            <rect key="frame" x="16" y="16" width="343" height="200"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="200" id="WDj-zS-cVG"/>
-                                            </constraints>
-                                        </mapView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="leading" secondItem="32N-3Z-mt6" secondAttribute="leadingMargin" id="AgY-4o-YVT"/>
-                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="trailing" secondItem="32N-3Z-mt6" secondAttribute="trailingMargin" id="N0k-co-XJQ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="jhm-Na-O2y" secondAttribute="bottom" constant="63" id="QuN-FF-0Zf"/>
-                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="leading" secondItem="32N-3Z-mt6" secondAttribute="leadingMargin" id="Xx1-Rw-CuF"/>
-                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="top" secondItem="32N-3Z-mt6" secondAttribute="topMargin" constant="5" id="dGD-B0-liP"/>
-                                        <constraint firstItem="jhm-Na-O2y" firstAttribute="trailing" secondItem="32N-3Z-mt6" secondAttribute="trailingMargin" id="m1r-WF-8OT"/>
-                                        <constraint firstItem="syi-4Q-cTP" firstAttribute="top" secondItem="jhm-Na-O2y" secondAttribute="bottom" constant="8" id="sgF-9l-Zhp"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="locationLabel" destination="syi-4Q-cTP" id="tIK-Ez-UxG"/>
-                                    <outlet property="mapView" destination="jhm-Na-O2y" id="nVB-Q9-Ljo"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -268,7 +343,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VSN-7E-kxI">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="149.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <string key="text">KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN. This app was made by the Knoxville CoocaHeads in support of KnoxDevs.</string>
+                                                    <string key="text">This app was made by the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -278,17 +353,17 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Questions" id="aBQ-5j-fMB">
+                            <tableViewSection headerTitle="Issues" id="GeZ-mt-Vyr">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Paz-yt-ACz" rowHeight="69" style="IBUITableViewCellStyleDefault" id="KeM-Oq-55W">
-                                        <rect key="frame" x="0.0" y="178" width="375" height="69"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Q1w-Wr-nlH" rowHeight="75" style="IBUITableViewCellStyleDefault" id="XhU-VH-BL1">
+                                        <rect key="frame" x="0.0" y="178" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KeM-Oq-55W" id="a5l-m7-lXu">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="68.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XhU-VH-BL1" id="6Ma-xr-cSU">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="If you have questions about this app, please send an email here." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Paz-yt-ACz">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="68.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Issues or suggestions for improvement can be submitted to the GitHub repo." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q1w-Wr-nlH">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="74.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -297,20 +372,42 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="EOI-nQ-yJe">
-                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Contributors" id="CEY-Nl-v8D">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="QMm-8C-19m" style="IBUITableViewCellStyleDefault" id="h12-4k-xmc">
+                                        <rect key="frame" x="0.0" y="281" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EOI-nQ-yJe" id="aQ6-es-Wac">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h12-4k-xmc" id="mmr-9B-tqa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Gavin Wiggins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QMm-8C-19m">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zi3-45-aDI">
-                                        <rect key="frame" x="0.0" y="291" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="p9x-he-4TP" style="IBUITableViewCellStyleDefault" id="P7Q-bK-uRW">
+                                        <rect key="frame" x="0.0" y="325" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zi3-45-aDI" id="1KG-1X-Xrg">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P7Q-bK-uRW" id="Qa5-Tg-DoR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Anyone want to contribute to this app?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p9x-he-4TP">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -325,7 +422,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4i-6w-9VS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-706" y="572"/>
+            <point key="canvasLocation" x="-706.39999999999998" y="571.66416791604206"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XHz-j6-mch">
@@ -372,6 +469,6 @@
         <image name="website" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BrW-rq-mXl"/>
+        <segue reference="L7I-mu-1Kk"/>
     </inferredMetricsTieBreakers>
 </document>

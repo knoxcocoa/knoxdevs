@@ -95,24 +95,27 @@ class SQLiteDatabase {
         defer { sqlite3_finalize(queryOut) }
         
         if sqlite3_prepare_v2(db, queryStatement, -1, &queryOut, nil) == SQLITE_OK {
-            var organizers = [Organizer]()
             
-            while sqlite3_step(queryOut) == SQLITE_ROW {
+            if sqlite3_step(queryOut) == SQLITE_ROW {
                 let id = sqlite3_column_int64(queryOut, 0)
                 
                 let nameText = sqlite3_column_text(queryOut, 1)
                 let name = String(cString: nameText!)
                 
                 let twitterText = sqlite3_column_text(queryOut, 2)
-                let twitter = String(cString: twitterText!)
+                let twitter = getString(from: twitterText)
                 
                 let githubText = sqlite3_column_text(queryOut, 3)
-                let github = String(cString: githubText!)
+                let github = getString(from: githubText)
                 
-                let organizer = Organizer(id: id, name: name, twitter: twitter, github: github)
-                organizers.append(organizer)
+                let websiteText = sqlite3_column_text(queryOut, 4)
+                let website = getString(from: websiteText)
+                
+                let organizer = Organizer(id: id, name: name, twitter: twitter, github: github, website: website)
+                return organizer
+            } else {
+                return nil
             }
-            return organizers[0]
         } else {
             return nil
         }
