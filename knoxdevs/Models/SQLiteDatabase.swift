@@ -34,8 +34,7 @@ class SQLiteDatabase {
         return String(cString: cString)
     }
     
-    func allGroups() -> [GroupViewModel]? {
-        
+    func getGroups() -> [GroupViewModel]? {
         let queryStatementString = "SELECT * FROM groups;"
         var queryStatement: OpaquePointer? = nil
         defer { sqlite3_finalize(queryStatement) }
@@ -121,7 +120,7 @@ class SQLiteDatabase {
         }
     }
     
-    func getLocation(name: String) -> LocationViewModel? {
+    func getLocation(name: String) -> Location? {
         let queryStatement = "SELECT * FROM locations WHERE name LIKE \"\(name)\";"
         var queryOut: OpaquePointer? = nil
         defer { sqlite3_finalize(queryOut) }
@@ -135,18 +134,15 @@ class SQLiteDatabase {
                 let name = String(cString: nameText!)
                 
                 let addressText = sqlite3_column_text(queryOut, 2)
-                let address = getString(from: addressText)!
+                let address = String(cString: addressText!)
                 
                 let lat = sqlite3_column_double(queryOut, 3)
                 let lon = sqlite3_column_double(queryOut, 4)
                 
                 let websiteText = sqlite3_column_text(queryOut, 5)
-                let website = getString(from: websiteText)!
+                let website = String(cString: websiteText!)
                 
-                let loc = Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
-                let location = LocationViewModel(location: loc)
-                
-                return location
+                return Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
             } else {
                 return nil
             }
@@ -154,4 +150,5 @@ class SQLiteDatabase {
             return nil
         }
     }
+
 }

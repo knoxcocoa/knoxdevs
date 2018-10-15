@@ -10,9 +10,7 @@ import UIKit
 
 class GroupsViewController: UITableViewController, UISplitViewControllerDelegate, UISearchResultsUpdating {
 
-    let sqlitedb = SQLiteDatabase()
     let searchController = UISearchController(searchResultsController: nil)
-    
     var groups = [GroupViewModel]()
     var groupsFiltered = [GroupViewModel]()
     
@@ -30,18 +28,9 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        // open sqlite database and populate groups array
-        do {
-            try sqlitedb.open()
-        } catch SQLiteError.Path(let message) {
-            print("\(message)")
-        } catch SQLiteError.Open(let message) {
-            print("\(message)")
-        } catch {
-            print("Unexpected error.")
-        }
-        guard let allGroups = sqlitedb.allGroups() else { return }
-        groups = allGroups
+        // populate groups array
+        let groupsVM = GroupsViewModel()
+        groups = groupsVM.groups
     }
     
     // MARK: - Table view data source

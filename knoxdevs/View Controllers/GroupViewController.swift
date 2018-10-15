@@ -11,7 +11,6 @@ import SafariServices
 
 class GroupViewController: UITableViewController {
     
-    let sqlitedb = SQLiteDatabase()
     let headers = ["", "Description", "Location", "Links", "Organizers", "Contact"]
     var links = [Link]()
     var location: LocationViewModel?
@@ -21,24 +20,8 @@ class GroupViewController: UITableViewController {
             loadViewIfNeeded()
             guard let group = group else { return }
             self.links = group.links
-            
-            // open sqlite database and get location for group
-            do {
-                try sqlitedb.open()
-            } catch SQLiteError.Path(let message) {
-                print("\(message)")
-            } catch SQLiteError.Open(let message) {
-                print("\(message)")
-            } catch {
-                print("Unexpected error.")
-            }
-            guard let location = sqlitedb.getLocation(name: group.location) else { return }
-            self.location = location
+            self.location = LocationViewModel(locationName: group.location)
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     // MARK: - Table view data source

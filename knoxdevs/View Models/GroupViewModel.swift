@@ -34,8 +34,6 @@ struct GroupViewModel {
     let organizers: [OrganizerViewModel]
     let banner: UIImage
 
-    private static let sqlitedb = SQLiteDatabase()
-
     init(group: Group) {
         self.name = group.name
         self.tags = group.tags
@@ -73,7 +71,7 @@ struct GroupViewModel {
     }
     
     private static func getOrganizers(group: Group) -> [OrganizerViewModel] {
-        let names = group.organizers.components(separatedBy: ", ")
+        let sqlitedb = SQLiteDatabase()
         
         do {
             try sqlitedb.open()
@@ -86,6 +84,7 @@ struct GroupViewModel {
         }
         
         var organizersVM = [OrganizerViewModel]()
+        let names = group.organizers.components(separatedBy: ", ")
         
         for n in names {
             if let organizer = sqlitedb.getOrganizer(name: n) {
@@ -97,6 +96,7 @@ struct GroupViewModel {
                 organizersVM.append(orgvm)
             }
         }
+
         return organizersVM
     }
     
