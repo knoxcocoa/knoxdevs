@@ -12,15 +12,29 @@ import SafariServices
 class GroupViewController: UITableViewController {
     
     let headers = ["", "Description", "Location", "Links", "Organizers", "Contact"]
-    var location: LocationViewModel?
     
     var group: GroupViewModel? {
         didSet {
             loadViewIfNeeded()
             guard let group = group else { return }
             self.location = LocationViewModel(locationName: group.location)
+            
+            let sqlitedb = SQLiteDatabase()
+            
+            sqlitedb.getOrganizers(for: group) { [weak self] organizers, error in
+                if let error = error {
+                    //self?.handleError(error: error)
+                    print(error)
+                }
+                if let organizers = organizers {
+                    self?.organizers = organizers
+                }
+            }
         }
     }
+    
+    var location: LocationViewModel?
+    var organizers: [OrganizerViewModel]?
     
     // MARK: - Table view data source
     
@@ -33,7 +47,7 @@ class GroupViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let group = group else { return 1 }
+        guard let group = group, let organizers = organizers else { return 1 }
         
         switch section {
         case 0:
@@ -43,9 +57,9 @@ class GroupViewController: UITableViewController {
         case 2:
             return 1    // location section
         case 3:
-            return group.links.count        // links section
+            return group.links.count    // links section
         case 4:
-            return group.organizers.count   // organizers section
+            return organizers.count     // organizers section
         case 5:
             return 1    // contact section
         default:
@@ -55,7 +69,7 @@ class GroupViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let group = group, let location = location else {
+        guard let group = group, let organizers = organizers, let location = location else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
             cell.textLabel?.text = "none"
             return cell
@@ -92,7 +106,7 @@ class GroupViewController: UITableViewController {
         case 4:
             // organizers section
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizerCell", for: indexPath) as! OrganizerTableViewCell
-            let organizer = group.organizers[indexPath.row]
+            let organizer = organizers[indexPath.row]
             cell.parentVC = self
             cell.organizerIcon.image = organizer.icon
             cell.organizerLabel.text = organizer.name

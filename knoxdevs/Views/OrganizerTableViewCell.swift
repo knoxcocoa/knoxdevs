@@ -26,19 +26,16 @@ class OrganizerTableViewCell: UITableViewCell {
         switch sender.tag {
         case 0:
             // github button
-            print("github pressed")
             guard let parentVC = parentVC, let url = githubUrl else { return }
             let safariVC = SFSafariViewController(url: url)
             parentVC.present(safariVC, animated: true, completion: nil)
         case 1:
             // twitter button
-            print("twitter pressed")
             guard let parentVC = parentVC, let url = twitterUrl else { return }
             let safariVC = SFSafariViewController(url: url)
             parentVC.present(safariVC, animated: true, completion: nil)
         case 2:
             // website button
-            print("website pressed")
             guard let parentVC = parentVC, let url = websiteUrl else { return }
             let safariVC = SFSafariViewController(url: url)
             parentVC.present(safariVC, animated: true, completion: nil)

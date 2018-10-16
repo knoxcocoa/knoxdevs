@@ -28,11 +28,7 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        // populate groups array
-        //let groupsVM = GroupsViewModel()
-        //groups = groupsVM.groups
-        
-        // ---
+        // populate groups view model array from database file
         let sqlitedb = SQLiteDatabase()
         
         sqlitedb.getGroups { [weak self] groups, error in

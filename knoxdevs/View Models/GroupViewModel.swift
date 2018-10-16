@@ -17,7 +17,7 @@ struct GroupViewModel {
     let links: [LinkViewModel]
     let email: String?
     let location: String
-    let organizers: [OrganizerViewModel]
+    let organizers: String
     let banner: UIImage
 
     init(group: Group) {
@@ -27,8 +27,8 @@ struct GroupViewModel {
         self.links = GroupViewModel.getLinks(group: group)
         self.email = group.email
         self.location = group.location
-        self.organizers = GroupViewModel.getOrganizers(group: group)
-        self.banner = GroupViewModel.getImage(name: group.name)
+        self.organizers = group.organizers
+        self.banner = GroupViewModel.getBannerImage(name: group.name)
     }
     
     private static func getLinks(group: Group) -> [LinkViewModel] {
@@ -53,41 +53,11 @@ struct GroupViewModel {
             let link = LinkViewModel(linkType: .meetup, urlString: meetupString)
             links.append(link)
         }
-        
+
         return links
     }
-    
-    private static func getOrganizers(group: Group) -> [OrganizerViewModel] {
-        let sqlitedb = SQLiteDatabase()
-        
-        do {
-            try sqlitedb.open()
-        } catch SQLiteError.Path(let message) {
-            print("\(message)")
-        } catch SQLiteError.Open(let message) {
-            print("\(message)")
-        } catch {
-            print("Unexpected error.")
-        }
-        
-        var organizersVM = [OrganizerViewModel]()
-        let names = group.organizers.components(separatedBy: ", ")
-        
-        for n in names {
-            if let organizer = sqlitedb.getOrganizer(name: n) {
-                let orgvm = OrganizerViewModel(organizer: organizer)
-                organizersVM.append(orgvm)
-            } else {
-                let org = Organizer(id: 0, name: "Cold Beer", twitter: nil, github: nil, website: nil)
-                let orgvm = OrganizerViewModel(organizer: org)
-                organizersVM.append(orgvm)
-            }
-        }
 
-        return organizersVM
-    }
-    
-    private static func getImage(name: String) -> UIImage {
+    private static func getBannerImage(name: String) -> UIImage {
         switch name {
         case "DC 865":
             return UIImage(named: "dc865")!
