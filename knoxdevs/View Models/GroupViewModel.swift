@@ -9,26 +9,12 @@
 import Foundation
 import UIKit
 
-enum LinkType: String {
-    case website = "website"
-    case github = "github"
-    case twitter = "twitter"
-    case meetup = "meetup"
-    case none
-}
-
-struct Link {
-    let handle: String
-    let type: LinkType
-    let url: URL
-}
-
 struct GroupViewModel {
 
     let name: String
     let tags: String
     let description: String
-    let links: [Link]
+    let links: [LinkViewModel]
     let email: String?
     let location: String
     let organizers: [OrganizerViewModel]
@@ -45,28 +31,29 @@ struct GroupViewModel {
         self.banner = GroupViewModel.getImage(name: group.name)
     }
     
-    private static func getLinks(group: Group) -> [Link] {
-        var links = [Link]()
-        if let website = group.website {
-            if let url = URL(string: website) {
-                links.append(Link(handle: website, type: .website, url: url))
-            }
+    private static func getLinks(group: Group) -> [LinkViewModel] {
+        var links = [LinkViewModel]()
+        
+        if let websiteString = group.website {
+            let link = LinkViewModel(linkType: .website, urlString: websiteString)
+            links.append(link)
         }
-        if let github = group.github {
-            if let url = URL(string: "https://github.com/\(github)") {
-                links.append(Link(handle: github, type: .github, url: url))
-            }
+        
+        if let githubString = group.github {
+            let link = LinkViewModel(linkType: .github, urlString: githubString)
+            links.append(link)
         }
-        if let twitter = group.twitter {
-            if let url = URL(string: "https://twitter.com/\(twitter)") {
-                links.append(Link(handle: twitter, type: .twitter, url: url))
-            }
+        
+        if let twitterString = group.twitter {
+            let link = LinkViewModel(linkType: .twitter, urlString: twitterString)
+            links.append(link)
         }
-        if let meetup = group.meetup {
-            if let url = URL(string: "https://www.meetup.com/\(meetup)") {
-                links.append(Link(handle: meetup, type: .meetup, url: url))
-            }
+        
+        if let meetupString = group.meetup {
+            let link = LinkViewModel(linkType: .meetup, urlString: meetupString)
+            links.append(link)
         }
+        
         return links
     }
     

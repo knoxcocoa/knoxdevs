@@ -10,22 +10,12 @@ import Foundation
 import SQLite3
 
 enum SQLiteError: Error {
-    case Path(message: String)
-    case Open(message: String)
+    case Path(String)
+    case Open(String)
+    case Query(String)
 }
 
 class SQLiteDatabase {
-    
-    fileprivate var db: OpaquePointer?
-    
-    func open() throws {
-        guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
-            throw SQLiteError.Path(message: "Error with path to sqlite database file.")
-        }
-        if sqlite3_open(path, &db) != SQLITE_OK {
-            throw SQLiteError.Open(message: "Error opening sqlite database.")
-        }
-    }
     
     private func getString(from sqlText: UnsafePointer<UInt8>?) -> String? {
         guard let cString = sqlText else {
@@ -34,6 +24,83 @@ class SQLiteDatabase {
         return String(cString: cString)
     }
     
+    func getGroups(completion: @escaping ([GroupViewModel]?, SQLiteError?) -> Void) {
+        var db: OpaquePointer?
+        
+        guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
+            let error = SQLiteError.Path("Error with path to database file.")
+            completion(nil, error)
+            return
+        }
+        
+        if sqlite3_open(path, &db) != SQLITE_OK {
+            let error = SQLiteError.Open("Error opening sqlite database.")
+            completion(nil, error)
+            return
+        }
+        
+        let queryStatementString = "SELECT * FROM groups;"
+        var queryStatement: OpaquePointer? = nil
+        defer { sqlite3_finalize(queryStatement) }
+        
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            var groups = [GroupViewModel]()
+            
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let id = sqlite3_column_int64(queryStatement, 0)
+                
+                let nameText = sqlite3_column_text(queryStatement, 1)
+                let name = String(cString: nameText!)
+                
+                let tagsText = sqlite3_column_text(queryStatement, 2)
+                let tags = String(cString: tagsText!)
+                
+                let websiteText = sqlite3_column_text(queryStatement, 3)
+                let website = getString(from: websiteText)
+                
+                let emailText = sqlite3_column_text(queryStatement, 4)
+                let email = getString(from: emailText)
+                
+                let githubText = sqlite3_column_text(queryStatement, 5)
+                let github = getString(from: githubText)
+                
+                let twitterText = sqlite3_column_text(queryStatement, 6)
+                let twitter = getString(from: twitterText)
+                
+                let meetupText = sqlite3_column_text(queryStatement, 7)
+                let meetup = getString(from: meetupText)
+                
+                let descriptionText = sqlite3_column_text(queryStatement, 8)
+                let desc = String(cString: descriptionText!)
+                
+                let locationText = sqlite3_column_text(queryStatement, 9)
+                let loc = String(cString: locationText!)
+                
+                let organizersText = sqlite3_column_text(queryStatement, 10)
+                let orgs = String(cString: organizersText!)
+                
+                let group = Group(id: id, name: name, tags: tags, website: website, email: email, github: github, twitter: twitter, meetup: meetup, description: desc, location: loc, organizers: orgs)
+                let groupVM = GroupViewModel(group: group)
+                groups.append(groupVM)
+            }
+            completion(groups, nil)
+        } else {
+            let error = SQLiteError.Query("Error with get all groups query.")
+            completion(nil, error)
+        }
+    }
+    
+    fileprivate var db: OpaquePointer?
+    
+    func open() throws {
+        guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
+            throw SQLiteError.Path("Error with path to sqlite database file.")
+        }
+        if sqlite3_open(path, &db) != SQLITE_OK {
+            throw SQLiteError.Open("Error opening sqlite database.")
+        }
+    }
+    /*
     func getGroups() -> [GroupViewModel]? {
         let queryStatementString = "SELECT * FROM groups;"
         var queryStatement: OpaquePointer? = nil
@@ -86,6 +153,7 @@ class SQLiteDatabase {
             return nil
         }
     }
+    */
     
     func getOrganizer(name: String) -> Organizer? {
         

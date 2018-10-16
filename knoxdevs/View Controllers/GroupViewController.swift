@@ -12,14 +12,12 @@ import SafariServices
 class GroupViewController: UITableViewController {
     
     let headers = ["", "Description", "Location", "Links", "Organizers", "Contact"]
-    var links = [Link]()
     var location: LocationViewModel?
     
     var group: GroupViewModel? {
         didSet {
             loadViewIfNeeded()
             guard let group = group else { return }
-            self.links = group.links
             self.location = LocationViewModel(locationName: group.location)
         }
     }
@@ -45,7 +43,7 @@ class GroupViewController: UITableViewController {
         case 2:
             return 1    // location section
         case 3:
-            return links.count  // links section
+            return group.links.count        // links section
         case 4:
             return group.organizers.count   // organizers section
         case 5:
@@ -88,8 +86,8 @@ class GroupViewController: UITableViewController {
         case 3:
             // links section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath)
-            cell.imageView?.image = UIImage(named: links[indexPath.row].type.rawValue)
-            cell.textLabel?.text = links[indexPath.row].handle
+            cell.imageView?.image = UIImage(named: group.links[indexPath.row].type.rawValue)
+            cell.textLabel?.text = group.links[indexPath.row].type.rawValue
             return cell
         case 4:
             // organizers section
@@ -124,7 +122,7 @@ class GroupViewController: UITableViewController {
         switch indexPath.section {
         case 3:
             // links section
-            let url = links[indexPath.row].url
+            guard let url = group?.links[indexPath.row].url else { return }
             let safariVC = SFSafariViewController(url: url)
             present(safariVC, animated: true, completion: nil)
         case 5:

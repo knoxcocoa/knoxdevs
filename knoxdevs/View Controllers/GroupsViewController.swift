@@ -29,8 +29,21 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         definesPresentationContext = true
         
         // populate groups array
-        let groupsVM = GroupsViewModel()
-        groups = groupsVM.groups
+        //let groupsVM = GroupsViewModel()
+        //groups = groupsVM.groups
+        
+        // ---
+        let sqlitedb = SQLiteDatabase()
+        
+        sqlitedb.getGroups { [weak self] groups, error in
+            if let error = error {
+                //self?.handleError(error: error)
+                print(error)
+            }
+            if let groups = groups {
+                self?.groups = groups
+            }
+        }
     }
     
     // MARK: - Table view data source
