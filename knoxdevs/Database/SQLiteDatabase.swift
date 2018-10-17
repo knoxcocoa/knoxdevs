@@ -26,22 +26,30 @@ class SQLiteDatabase {
         return String(cString: cString)
     }
     
-    func getGroups(completion: @escaping ([GroupViewModel]?, SQLiteError?) -> Void) {
+    func openDatabase() -> SQLiteError? {
         
         guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
             let errorMessage = String(cString: sqlite3_errmsg(db))
             let error = SQLiteError.invalidPath(errorMessage)
-            completion(nil, error)
-            return
+            return error
         }
         
         if sqlite3_open(path, &db) != SQLITE_OK {
             let errorMessage = String(cString: sqlite3_errmsg(db))
             let error = SQLiteError.failedOpen(errorMessage)
+            return error
+        } else {
+            return nil
+        }
+    }
+    
+    func getGroups(completion: @escaping ([GroupViewModel]?, SQLiteError?) -> Void) {
+        
+        if let error = openDatabase() {
             completion(nil, error)
             return
         }
-        
+
         let queryStatementString = "SELECT * FROM groups;"
         var queryStatement: OpaquePointer? = nil
         defer { sqlite3_finalize(queryStatement) }
@@ -97,20 +105,11 @@ class SQLiteDatabase {
     
     func getOrganizers(for group: GroupViewModel, completion: @escaping ([OrganizerViewModel]?, SQLiteError?) -> Void) {
         
-        guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
-            let errorMessage = String(cString: sqlite3_errmsg(db))
-            let error = SQLiteError.invalidPath(errorMessage)
+        if let error = openDatabase() {
             completion(nil, error)
             return
         }
-        
-        if sqlite3_open(path, &db) != SQLITE_OK {
-            let errorMessage = String(cString: sqlite3_errmsg(db))
-            let error = SQLiteError.failedOpen(errorMessage)
-            completion(nil, error)
-            return
-        }
-        
+
         let namesString = group.organizers
         let namesReplace = namesString.replacingOccurrences(of: ", ", with: "\", \"")
         let names = "\"\(namesReplace)\""
@@ -151,20 +150,11 @@ class SQLiteDatabase {
     
     func getLocation(for group: GroupViewModel, completion: @escaping (LocationViewModel?, SQLiteError?) -> Void) {
         
-        guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
-            let errorMessage = String(cString: sqlite3_errmsg(db))
-            let error = SQLiteError.invalidPath(errorMessage)
+        if let error = openDatabase() {
             completion(nil, error)
             return
         }
-        
-        if sqlite3_open(path, &db) != SQLITE_OK {
-            let errorMessage = String(cString: sqlite3_errmsg(db))
-            let error = SQLiteError.failedOpen(errorMessage)
-            completion(nil, error)
-            return
-        }
-        
+
         let queryStatement = "SELECT * FROM locations WHERE name LIKE \"\(group.location)\";"
         var queryOut: OpaquePointer? = nil
         defer { sqlite3_finalize(queryOut) }

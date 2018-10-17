@@ -68,7 +68,6 @@
 				866C0EA5217620ED00036649 /* LinkViewModel.swift */,
 				864126E1216F060A0016BECD /* LocationViewModel.swift */,
 				86FECC5021738D7300682BD0 /* OrganizerViewModel.swift */,
-				86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -94,6 +93,7 @@
 			children = (
 				867DF35C212CF6A300991CB3 /* AppDelegate.swift */,
 				867DF368212CF6A300991CB3 /* Info.plist */,
+				86FEFC2C2176F26C00613BCB /* Database */,
 				86AC41B821334400002E73E5 /* Models */,
 				8612EEF2216A8FE0005A3286 /* View Models */,
 				86AC41B7213343D1002E73E5 /* View Controllers */,
@@ -130,9 +130,17 @@
 				86AC41BB21334447002E73E5 /* Group.swift */,
 				86849732216ED0DC00FFA599 /* Location.swift */,
 				86AC41BD21334481002E73E5 /* Organizer.swift */,
-				86AC41BF21334ACF002E73E5 /* knoxdevs.db */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		86FEFC2C2176F26C00613BCB /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */,
+				86AC41BF21334ACF002E73E5 /* knoxdevs.db */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
