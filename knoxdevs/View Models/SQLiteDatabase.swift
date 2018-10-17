@@ -10,12 +10,14 @@ import Foundation
 import SQLite3
 
 enum SQLiteError: Error {
-    case Path(String)
-    case Open(String)
-    case Query(String)
+    case invalidPath(String)
+    case failedOpen(String)
+    case invalidQuery(String)
 }
 
 class SQLiteDatabase {
+    
+    private var db: OpaquePointer?
     
     private func getString(from sqlText: UnsafePointer<UInt8>?) -> String? {
         guard let cString = sqlText else {
@@ -25,16 +27,17 @@ class SQLiteDatabase {
     }
     
     func getGroups(completion: @escaping ([GroupViewModel]?, SQLiteError?) -> Void) {
-        var db: OpaquePointer?
         
         guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
-            let error = SQLiteError.Path("Error with path to database file.")
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.invalidPath(errorMessage)
             completion(nil, error)
             return
         }
         
         if sqlite3_open(path, &db) != SQLITE_OK {
-            let error = SQLiteError.Open("Error opening sqlite database.")
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.failedOpen(errorMessage)
             completion(nil, error)
             return
         }
@@ -86,22 +89,24 @@ class SQLiteDatabase {
             
             completion(groups, nil)
         } else {
-            let error = SQLiteError.Query("Error with get all groups query.")
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.invalidQuery(errorMessage)
             completion(nil, error)
         }
     }
     
     func getOrganizers(for group: GroupViewModel, completion: @escaping ([OrganizerViewModel]?, SQLiteError?) -> Void) {
-        var db: OpaquePointer?
         
         guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
-            let error = SQLiteError.Path("Error with path to database file.")
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.invalidPath(errorMessage)
             completion(nil, error)
             return
         }
         
         if sqlite3_open(path, &db) != SQLITE_OK {
-            let error = SQLiteError.Open("Error opening sqlite database.")
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.failedOpen(errorMessage)
             completion(nil, error)
             return
         }
@@ -139,29 +144,31 @@ class SQLiteDatabase {
             completion(organizers, nil)
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
-            let error = SQLiteError.Query("Error for organizers query, \(errorMessage)")
+            let error = SQLiteError.invalidQuery(errorMessage)
             completion(nil, error)
         }
     }
     
-    // MARK: - Remove Below
-    
-    fileprivate var db: OpaquePointer?
-    
-    func open() throws {
+    func getLocation(for group: GroupViewModel, completion: @escaping (LocationViewModel?, SQLiteError?) -> Void) {
+        
         guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
-            throw SQLiteError.Path("Error with path to sqlite database file.")
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.invalidPath(errorMessage)
+            completion(nil, error)
+            return
         }
+        
         if sqlite3_open(path, &db) != SQLITE_OK {
-            throw SQLiteError.Open("Error opening sqlite database.")
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.failedOpen(errorMessage)
+            completion(nil, error)
+            return
         }
-    }
-
-    func getLocation(name: String) -> Location? {
-        let queryStatement = "SELECT * FROM locations WHERE name LIKE \"\(name)\";"
+        
+        let queryStatement = "SELECT * FROM locations WHERE name LIKE \"\(group.location)\";"
         var queryOut: OpaquePointer? = nil
         defer { sqlite3_finalize(queryOut) }
-
+        
         if sqlite3_prepare_v2(db, queryStatement, -1, &queryOut, nil) == SQLITE_OK {
             
             if sqlite3_step(queryOut) == SQLITE_ROW {
@@ -179,12 +186,19 @@ class SQLiteDatabase {
                 let websiteText = sqlite3_column_text(queryOut, 5)
                 let website = String(cString: websiteText!)
                 
-                return Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
+                let location = Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
+                let locationVM = LocationViewModel(location: location)
+                
+                completion(locationVM, nil)
             } else {
-                return nil
+                let errorMessage = String(cString: sqlite3_errmsg(db))
+                let error = SQLiteError.invalidQuery(errorMessage)
+                completion(nil, error)
             }
         } else {
-            return nil
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.invalidQuery(errorMessage)
+            completion(nil, error)
         }
     }
 

@@ -12,13 +12,13 @@ import SafariServices
 class GroupViewController: UITableViewController {
     
     let headers = ["", "Description", "Location", "Links", "Organizers", "Contact"]
-    
+    var location: LocationViewModel?
+    var organizers: [OrganizerViewModel]?
+
     var group: GroupViewModel? {
         didSet {
             loadViewIfNeeded()
             guard let group = group else { return }
-            self.location = LocationViewModel(locationName: group.location)
-            
             let sqlitedb = SQLiteDatabase()
             
             sqlitedb.getOrganizers(for: group) { [weak self] organizers, error in
@@ -30,11 +30,18 @@ class GroupViewController: UITableViewController {
                     self?.organizers = organizers
                 }
             }
+            
+            sqlitedb.getLocation(for: group) { [weak self] location, error in
+                if let error = error {
+                    //self?.handleError(error: error)
+                    print(error)
+                }
+                if let location = location {
+                    self?.location = location
+                }
+            }
         }
     }
-    
-    var location: LocationViewModel?
-    var organizers: [OrganizerViewModel]?
     
     // MARK: - Table view data source
     
