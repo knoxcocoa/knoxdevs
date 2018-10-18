@@ -11,7 +11,7 @@ import SafariServices
 
 class GroupViewController: UITableViewController {
     
-    let headers = ["", "Description", "Location", "Links", "Organizers", "Contact"]
+    let headers = ["", "Description", "Meeting Location", "Group Links", "Organizers", "Contact"]
     var location: LocationViewModel?
     var organizers: [OrganizerViewModel]?
 

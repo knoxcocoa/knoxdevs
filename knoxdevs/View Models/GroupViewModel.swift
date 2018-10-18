@@ -18,6 +18,7 @@ struct GroupViewModel {
     let email: String?
     let location: String
     let organizers: String
+    let icon: UIImage
     let banner: UIImage
 
     init(group: Group) {
@@ -28,6 +29,7 @@ struct GroupViewModel {
         self.email = group.email
         self.location = group.location
         self.organizers = group.organizers
+        self.icon = GroupViewModel.getIconImage(name: group.name)
         self.banner = GroupViewModel.getBannerImage(name: group.name)
     }
     
@@ -56,11 +58,38 @@ struct GroupViewModel {
 
         return links
     }
+    
+    private static func getIconImage(name: String) -> UIImage {
+        switch name {
+        case "Agile Knoxville":
+            return UIImage(named: "agile_sm")!
+        case "DC 865":
+            return UIImage(named: "dc865_sm")!
+        case "DevBeers":
+            return UIImage(named: "devbeers_sm")!
+        case "FunctionalKnox":
+            return UIImage(named: "functional_sm")!
+        case "Knoxville CocoaHeads":
+            return UIImage(named: "cocoaheads_sm")!
+        case "KnoxPy":
+            return UIImage(named: "knoxpy_sm")!
+        default:
+            return UIImage(named: "groups")!
+        }
+    }
 
     private static func getBannerImage(name: String) -> UIImage {
         switch name {
+        case "Agile Knoxville":
+            return UIImage(named: "agile")!
         case "DC 865":
             return UIImage(named: "dc865")!
+        case "DevBeers":
+            return UIImage(named: "devbeers")!
+        case "FunctionalKnox":
+            return UIImage(named: "functional")!
+        case "Knoxville CocoaHeads":
+            return UIImage(named: "cocoaheads")!
         case "KnoxPy":
             return UIImage(named: "knoxpy")!
         default:

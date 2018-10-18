@@ -65,6 +65,7 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         }
         cell.textLabel?.text = group.name
         cell.detailTextLabel?.text = group.tags
+        cell.imageView?.image = group.icon
         return cell
     }
     
