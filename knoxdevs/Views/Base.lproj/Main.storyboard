@@ -333,81 +333,68 @@
                         <sections>
                             <tableViewSection id="GLF-FJ-kxl">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="VSN-7E-kxI" rowHeight="150" style="IBUITableViewCellStyleDefault" id="sSg-Mc-pr0">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="212" id="92i-kP-FyZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sSg-Mc-pr0" id="eaJ-wB-jcl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="92i-kP-FyZ" id="Z5A-hi-BA6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="211.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VSN-7E-kxI">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="149.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <string key="text">This app was made by the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN.</string>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIz-jJ-tdb">
+                                                    <rect key="frame" x="16" y="13" width="343" height="142.5"/>
+                                                    <string key="text">This app was made by the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN. Visit the KnoxDevs website to learn more.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzW-8B-vW0">
+                                                    <rect key="frame" x="113.5" y="169" width="148" height="30"/>
+                                                    <state key="normal" title="https://knoxdevs.com"/>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nIz-jJ-tdb" firstAttribute="trailing" secondItem="Z5A-hi-BA6" secondAttribute="trailingMargin" id="6Eq-lb-RWF"/>
+                                                <constraint firstItem="vzW-8B-vW0" firstAttribute="top" secondItem="nIz-jJ-tdb" secondAttribute="bottom" constant="13.5" id="90u-ma-Szg"/>
+                                                <constraint firstItem="nIz-jJ-tdb" firstAttribute="top" secondItem="Z5A-hi-BA6" secondAttribute="topMargin" constant="2" id="DdA-xo-9y8"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vzW-8B-vW0" secondAttribute="bottom" constant="2" id="glB-pH-zNT"/>
+                                                <constraint firstItem="nIz-jJ-tdb" firstAttribute="leading" secondItem="Z5A-hi-BA6" secondAttribute="leadingMargin" id="qgL-vN-R5f"/>
+                                                <constraint firstItem="vzW-8B-vW0" firstAttribute="centerX" secondItem="Z5A-hi-BA6" secondAttribute="centerX" id="v8W-Ox-P41"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Issues" id="GeZ-mt-Vyr">
+                            <tableViewSection headerTitle="Contribute" id="g0b-GM-UUi">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Q1w-Wr-nlH" rowHeight="75" style="IBUITableViewCellStyleDefault" id="XhU-VH-BL1">
-                                        <rect key="frame" x="0.0" y="178" width="375" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="gJN-8x-PeZ">
+                                        <rect key="frame" x="0.0" y="240" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XhU-VH-BL1" id="6Ma-xr-cSU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gJN-8x-PeZ" id="EYe-Zz-fFT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Issues or suggestions for improvement can be submitted to the GitHub repo." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q1w-Wr-nlH">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="74.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌱 This app is open-source and available on GitHub. Please contribute by submitting a Pull Request or Issue." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxn-Ah-fei">
+                                                    <rect key="frame" x="16" y="13" width="343" height="61"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfA-1f-KlH">
+                                                    <rect key="frame" x="85" y="83" width="205" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="205" id="MXQ-Dz-coz"/>
+                                                    </constraints>
+                                                    <state key="normal" title="https://github.com/knoxcocoa"/>
+                                                </button>
                                             </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Contributors" id="CEY-Nl-v8D">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="QMm-8C-19m" style="IBUITableViewCellStyleDefault" id="h12-4k-xmc">
-                                        <rect key="frame" x="0.0" y="281" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h12-4k-xmc" id="mmr-9B-tqa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Gavin Wiggins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QMm-8C-19m">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="p9x-he-4TP" style="IBUITableViewCellStyleDefault" id="P7Q-bK-uRW">
-                                        <rect key="frame" x="0.0" y="325" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P7Q-bK-uRW" id="Qa5-Tg-DoR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Anyone want to contribute to this app?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p9x-he-4TP">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Vxn-Ah-fei" firstAttribute="leading" secondItem="EYe-Zz-fFT" secondAttribute="leadingMargin" id="03T-iM-FQI"/>
+                                                <constraint firstItem="Vxn-Ah-fei" firstAttribute="trailing" secondItem="EYe-Zz-fFT" secondAttribute="trailingMargin" id="8z3-GO-7lA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TfA-1f-KlH" secondAttribute="bottom" constant="2" id="fPT-Xo-jNg"/>
+                                                <constraint firstItem="TfA-1f-KlH" firstAttribute="centerX" secondItem="EYe-Zz-fFT" secondAttribute="centerX" id="ioq-r2-cb1"/>
+                                                <constraint firstItem="Vxn-Ah-fei" firstAttribute="top" secondItem="EYe-Zz-fFT" secondAttribute="topMargin" constant="2" id="nLQ-4f-6y2"/>
+                                                <constraint firstItem="TfA-1f-KlH" firstAttribute="top" secondItem="Vxn-Ah-fei" secondAttribute="bottom" constant="9" id="zCd-97-hIb"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
