@@ -22,6 +22,7 @@
 		86AC41BE21334481002E73E5 /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC41BD21334481002E73E5 /* Organizer.swift */; };
 		86AC41C021334ACF002E73E5 /* knoxdevs.db in Resources */ = {isa = PBXBuildFile; fileRef = 86AC41BF21334ACF002E73E5 /* knoxdevs.db */; };
 		86AC41C621334D1D002E73E5 /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */; };
+		86F471EF2182C04700912739 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F471EE2182C04700912739 /* AboutViewController.swift */; };
 		86FECC4F2173898900682BD0 /* OrganizerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FECC4E2173898900682BD0 /* OrganizerTableViewCell.swift */; };
 		86FECC5121738D7300682BD0 /* OrganizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FECC5021738D7300682BD0 /* OrganizerViewModel.swift */; };
 		86FECC562173C2ED00682BD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86FECC542173C2EC00682BD0 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		86AC41BD21334481002E73E5 /* Organizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		86AC41BF21334ACF002E73E5 /* knoxdevs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = knoxdevs.db; sourceTree = "<group>"; };
 		86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
+		86F471EE2182C04700912739 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		86FECC4E2173898900682BD0 /* OrganizerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerTableViewCell.swift; sourceTree = "<group>"; };
 		86FECC5021738D7300682BD0 /* OrganizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerViewModel.swift; sourceTree = "<group>"; };
 		86FECC542173C2EC00682BD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		86AC41B7213343D1002E73E5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				86F471EE2182C04700912739 /* AboutViewController.swift */,
 				8684972D216EBF1A00FFA599 /* GroupsViewController.swift */,
 				867DF370212CF86C00991CB3 /* GroupViewController.swift */,
 			);
@@ -218,6 +221,7 @@
 				869FEC35217246ED00CA60FC /* BannerTableViewCell.swift in Sources */,
 				86FECC5121738D7300682BD0 /* OrganizerViewModel.swift in Sources */,
 				867DF371212CF86C00991CB3 /* GroupViewController.swift in Sources */,
+				86F471EF2182C04700912739 /* AboutViewController.swift in Sources */,
 				8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */,
 				867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */,
 				864126E2216F060A0016BECD /* LocationViewModel.swift in Sources */,

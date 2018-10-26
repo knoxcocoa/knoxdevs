@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -312,7 +313,7 @@
         <scene sceneID="zoo-eu-9qg">
             <objects>
                 <splitViewController id="ydI-6k-V7x" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" image="groups" id="185-Qu-SGJ"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="groups" selectedImage="groups" id="185-Qu-SGJ"/>
                     <connections>
                         <segue destination="CaI-ca-5lk" kind="relationship" relationship="masterViewController" id="XIT-Qm-eQL"/>
                         <segue destination="7CV-rh-cek" kind="relationship" relationship="detailViewController" id="BrW-rq-mXl"/>
@@ -321,95 +322,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQJ-vJ-cEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-706" y="-145"/>
-        </scene>
-        <!--About-->
-        <scene sceneID="aaw-qO-BYO">
-            <objects>
-                <tableViewController id="PgX-dd-FTX" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ffK-6g-3NS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections>
-                            <tableViewSection id="GLF-FJ-kxl">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="212" id="92i-kP-FyZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="92i-kP-FyZ" id="Z5A-hi-BA6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="211.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIz-jJ-tdb">
-                                                    <rect key="frame" x="16" y="13" width="343" height="142.5"/>
-                                                    <string key="text">This app was made by the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN. Visit the KnoxDevs website to learn more.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzW-8B-vW0">
-                                                    <rect key="frame" x="113.5" y="169" width="148" height="30"/>
-                                                    <state key="normal" title="https://knoxdevs.com"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="nIz-jJ-tdb" firstAttribute="trailing" secondItem="Z5A-hi-BA6" secondAttribute="trailingMargin" id="6Eq-lb-RWF"/>
-                                                <constraint firstItem="vzW-8B-vW0" firstAttribute="top" secondItem="nIz-jJ-tdb" secondAttribute="bottom" constant="13.5" id="90u-ma-Szg"/>
-                                                <constraint firstItem="nIz-jJ-tdb" firstAttribute="top" secondItem="Z5A-hi-BA6" secondAttribute="topMargin" constant="2" id="DdA-xo-9y8"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="vzW-8B-vW0" secondAttribute="bottom" constant="2" id="glB-pH-zNT"/>
-                                                <constraint firstItem="nIz-jJ-tdb" firstAttribute="leading" secondItem="Z5A-hi-BA6" secondAttribute="leadingMargin" id="qgL-vN-R5f"/>
-                                                <constraint firstItem="vzW-8B-vW0" firstAttribute="centerX" secondItem="Z5A-hi-BA6" secondAttribute="centerX" id="v8W-Ox-P41"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Contribute" id="g0b-GM-UUi">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="gJN-8x-PeZ">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="130"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gJN-8x-PeZ" id="EYe-Zz-fFT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌱 This app is open-source and available on GitHub. Please contribute by submitting a Pull Request or Issue." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxn-Ah-fei">
-                                                    <rect key="frame" x="16" y="13" width="343" height="61"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfA-1f-KlH">
-                                                    <rect key="frame" x="85" y="83" width="205" height="34"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="205" id="MXQ-Dz-coz"/>
-                                                    </constraints>
-                                                    <state key="normal" title="https://github.com/knoxcocoa"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Vxn-Ah-fei" firstAttribute="leading" secondItem="EYe-Zz-fFT" secondAttribute="leadingMargin" id="03T-iM-FQI"/>
-                                                <constraint firstItem="Vxn-Ah-fei" firstAttribute="trailing" secondItem="EYe-Zz-fFT" secondAttribute="trailingMargin" id="8z3-GO-7lA"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="TfA-1f-KlH" secondAttribute="bottom" constant="2" id="fPT-Xo-jNg"/>
-                                                <constraint firstItem="TfA-1f-KlH" firstAttribute="centerX" secondItem="EYe-Zz-fFT" secondAttribute="centerX" id="ioq-r2-cb1"/>
-                                                <constraint firstItem="Vxn-Ah-fei" firstAttribute="top" secondItem="EYe-Zz-fFT" secondAttribute="topMargin" constant="2" id="nLQ-4f-6y2"/>
-                                                <constraint firstItem="TfA-1f-KlH" firstAttribute="top" secondItem="Vxn-Ah-fei" secondAttribute="bottom" constant="9" id="zCd-97-hIb"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="PgX-dd-FTX" id="ZMQ-O0-fdN"/>
-                            <outlet property="delegate" destination="PgX-dd-FTX" id="5jp-Co-7tO"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="About" id="HGc-jy-Ffs"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d4i-6w-9VS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-706.39999999999998" y="571.66416791604206"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XHz-j6-mch">
@@ -422,7 +334,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="ydI-6k-V7x" kind="relationship" relationship="viewControllers" id="8Gq-ea-TeM"/>
-                        <segue destination="KIY-be-TIp" kind="relationship" relationship="viewControllers" id="5vo-FP-8be"/>
+                        <segue destination="SXj-w8-4cl" kind="relationship" relationship="viewControllers" id="Kti-YQ-c3q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xW-dm-cVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -430,23 +342,68 @@
             <point key="canvasLocation" x="-1481" y="-145"/>
         </scene>
         <!--About-->
-        <scene sceneID="2tA-Tc-bjJ">
+        <scene sceneID="Ryh-EJ-btW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KIY-be-TIp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" image="about" id="Mx7-8z-kEG"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x0j-6L-yod">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="PgX-dd-FTX" kind="relationship" relationship="rootViewController" id="uZ9-Uh-iT1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="muo-OS-s27" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="SXj-w8-4cl" customClass="AboutViewController" customModule="knoxdevs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D8C-if-ZtN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ko6-3a-diu">
+                                <rect key="frame" x="16" y="60" width="343" height="142.5"/>
+                                <string key="text">This app was made by the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN. Visit the KnoxDevs website to learn more.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌱 This app is open-source and available on GitHub. Please contribute by submitting a Pull Request or Issue." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HC0-Yf-FzH">
+                                <rect key="frame" x="16" y="270.5" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1C-3T-yf4">
+                                <rect key="frame" x="113.5" y="210.5" width="148" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="148" id="MZF-lB-kFe"/>
+                                </constraints>
+                                <state key="normal" title="https://knoxdevs.com"/>
+                                <connections>
+                                    <action selector="showWebsite:" destination="SXj-w8-4cl" eventType="touchUpInside" id="ZUr-Lv-E3Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feu-YL-Pm8">
+                                <rect key="frame" x="85" y="339.5" width="205" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="205" id="fyf-Ck-VoF"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="205" id="ugw-Nu-qch"/>
+                                </constraints>
+                                <state key="normal" title="https://github.com/knoxcocoa"/>
+                                <connections>
+                                    <action selector="showWebsite:" destination="SXj-w8-4cl" eventType="touchUpInside" id="PS5-UF-gmt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HC0-Yf-FzH" firstAttribute="top" secondItem="m1C-3T-yf4" secondAttribute="bottom" constant="30" id="HzS-NO-j6j"/>
+                            <constraint firstItem="feu-YL-Pm8" firstAttribute="top" secondItem="HC0-Yf-FzH" secondAttribute="bottom" constant="8" id="JT1-Cy-x62"/>
+                            <constraint firstItem="HC0-Yf-FzH" firstAttribute="leading" secondItem="sJD-Xu-uQH" secondAttribute="leading" constant="16" id="Lk3-tK-Ema"/>
+                            <constraint firstItem="feu-YL-Pm8" firstAttribute="centerX" secondItem="D8C-if-ZtN" secondAttribute="centerX" id="RDc-PX-05n"/>
+                            <constraint firstItem="Ko6-3a-diu" firstAttribute="leading" secondItem="sJD-Xu-uQH" secondAttribute="leading" constant="16" id="Xar-V7-BNF"/>
+                            <constraint firstItem="m1C-3T-yf4" firstAttribute="centerX" secondItem="D8C-if-ZtN" secondAttribute="centerX" id="YMd-KE-U1q"/>
+                            <constraint firstItem="sJD-Xu-uQH" firstAttribute="trailing" secondItem="HC0-Yf-FzH" secondAttribute="trailing" constant="16" id="aqs-eH-Vb3"/>
+                            <constraint firstItem="sJD-Xu-uQH" firstAttribute="trailing" secondItem="Ko6-3a-diu" secondAttribute="trailing" constant="16" id="dT2-6d-nwo"/>
+                            <constraint firstItem="Ko6-3a-diu" firstAttribute="top" secondItem="sJD-Xu-uQH" secondAttribute="top" constant="40" id="elY-F9-XS5"/>
+                            <constraint firstItem="m1C-3T-yf4" firstAttribute="top" secondItem="Ko6-3a-diu" secondAttribute="bottom" constant="8" id="zbI-0z-xGe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sJD-Xu-uQH"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="About" image="about" selectedImage="about" id="fED-XS-uwQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E5I-YC-cIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1482" y="572"/>
+            <point key="canvasLocation" x="-1482" y="564"/>
         </scene>
     </scenes>
     <resources>
@@ -456,6 +413,6 @@
         <image name="website" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L7I-mu-1Kk"/>
+        <segue reference="BrW-rq-mXl"/>
     </inferredMetricsTieBreakers>
 </document>
