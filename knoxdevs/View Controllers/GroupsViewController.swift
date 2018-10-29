@@ -33,13 +33,52 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         
         sqlitedb.getGroups { [weak self] groups, error in
             if let error = error {
-                //self?.handleError(error: error)
-                print(error)
+                self?.handleError(error: error)
             }
             if let groups = groups {
                 self?.groups = groups
             }
         }
+    }
+    
+    func handleError(error: SQLiteError) {
+        var errorMessage = ""
+        switch error {
+        case .invalidPath(let message):
+            errorMessage = "Invalid path \(message)."
+        case .failedOpen(let message):
+            errorMessage = "Faild to open database \(message)."
+        case .invalidQuery(let message):
+            errorMessage = "Invalid query \(message)."
+        }
+        let alertController = UIAlertController(title: "SQLite Error", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func sortGroups(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Sort Groups",
+                                                message: "Sort groups according to group name.",
+                                                preferredStyle: .alert)
+        let azAction = UIAlertAction(title: "A to Z", style: .default) { action in
+            self.groups.sort(by: {$0.name < $1.name })
+            self.tableView.reloadData()
+        }
+        let zaAction = UIAlertAction(title: "Z to A", style: .default) { action in
+            self.groups.sort(by: {$0.name > $1.name })
+            self.tableView.reloadData()
+        }
+        let shuffleAction = UIAlertAction(title: "Shuffle", style: .default) { action in
+            self.groups.shuffle()
+            self.tableView.reloadData()
+        }
+        alertController.addAction(azAction)
+        alertController.addAction(zaAction)
+        alertController.addAction(shuffleAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source

@@ -19,6 +19,8 @@ class GroupViewController: UITableViewController {
         didSet {
             loadViewIfNeeded()
             guard let group = group else { return }
+            self.navigationItem.title = group.name
+            
             let sqlitedb = SQLiteDatabase()
             
             sqlitedb.getOrganizers(for: group) { [weak self] organizers, error in
