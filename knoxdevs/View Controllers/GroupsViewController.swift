@@ -75,9 +75,11 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
             self.groups.shuffle()
             self.tableView.reloadData()
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(azAction)
         alertController.addAction(zaAction)
         alertController.addAction(shuffleAction)
+        alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
     

@@ -19,6 +19,7 @@ class SQLiteDatabase {
     
     private var db: OpaquePointer?
     
+    /// Private method to return an optional string from SQLite column text query.
     private func getString(from sqlText: UnsafePointer<UInt8>?) -> String? {
         guard let cString = sqlText else {
             return nil
@@ -26,7 +27,8 @@ class SQLiteDatabase {
         return String(cString: cString)
     }
     
-    func openDatabase() -> SQLiteError? {
+    /// Private method to open SQLite database or return an error.
+    private func openDatabase() -> SQLiteError? {
         
         guard let path = Bundle.main.path(forResource: "knoxdevs.db", ofType: nil) else {
             let errorMessage = String(cString: sqlite3_errmsg(db))
@@ -43,6 +45,7 @@ class SQLiteDatabase {
         }
     }
     
+    /// Get all groups from SQLite database or receive an error.
     func getGroups(completion: @escaping ([GroupViewModel]?, SQLiteError?) -> Void) {
         
         if let error = openDatabase() {
@@ -67,19 +70,19 @@ class SQLiteDatabase {
                 let tags = String(cString: tagsText!)
                 
                 let websiteText = sqlite3_column_text(queryStatement, 3)
-                let website = getString(from: websiteText)
+                let web = getString(from: websiteText)
                 
                 let emailText = sqlite3_column_text(queryStatement, 4)
                 let email = getString(from: emailText)
                 
                 let githubText = sqlite3_column_text(queryStatement, 5)
-                let github = getString(from: githubText)
+                let gi = getString(from: githubText)
                 
                 let twitterText = sqlite3_column_text(queryStatement, 6)
-                let twitter = getString(from: twitterText)
+                let tw = getString(from: twitterText)
                 
                 let meetupText = sqlite3_column_text(queryStatement, 7)
-                let meetup = getString(from: meetupText)
+                let me = getString(from: meetupText)
                 
                 let descriptionText = sqlite3_column_text(queryStatement, 8)
                 let desc = String(cString: descriptionText!)
@@ -90,7 +93,8 @@ class SQLiteDatabase {
                 let organizersText = sqlite3_column_text(queryStatement, 10)
                 let orgs = String(cString: organizersText!)
                 
-                let group = Group(id: id, name: name, tags: tags, website: website, email: email, github: github, twitter: twitter, meetup: meetup, description: desc, location: loc, organizers: orgs)
+                let group = Group(id: id, name: name, tags: tags, website: web, email: email, github: gi,
+                                  twitter: tw, meetup: me, description: desc, location: loc, organizers: orgs)
                 let groupVM = GroupViewModel(group: group)
                 groups.append(groupVM)
             }
@@ -103,6 +107,7 @@ class SQLiteDatabase {
         }
     }
     
+    /// Get all organizers in the SQLite database for a particular group or receive an error.
     func getOrganizers(for group: GroupViewModel, completion: @escaping ([OrganizerViewModel]?, SQLiteError?) -> Void) {
         
         if let error = openDatabase() {
@@ -148,6 +153,7 @@ class SQLiteDatabase {
         }
     }
     
+    /// Get a location from SQLite database or receive an error.
     func getLocation(for group: GroupViewModel, completion: @escaping (LocationViewModel?, SQLiteError?) -> Void) {
         
         if let error = openDatabase() {
