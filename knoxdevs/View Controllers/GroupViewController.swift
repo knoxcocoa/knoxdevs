@@ -19,52 +19,63 @@ class GroupViewController: UITableViewController {
         didSet {
             loadViewIfNeeded()
             guard let group = group else { return }
-            self.navigationItem.title = group.name
-            
-            let sqlitedb = SQLiteDatabase()
-            
-            sqlitedb.getOrganizers(for: group) { [weak self] organizers, error in
-                if let error = error {
-                    //self?.handleError(error: error)
-                    print(error)
-                }
-                if let organizers = organizers {
-                    self?.organizers = organizers
-                }
-            }
-            
-            sqlitedb.getLocation(for: group) { [weak self] location, error in
-                if let error = error {
-                    //self?.handleError(error: error)
-                    print(error)
-                }
-                if let location = location {
-                    self?.location = location
-                }
-            }
+            navigationItem.title = group.name
+            getOrganizersAndLocationFor(group: group)
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        applyTheme()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.bool(forKey: "themeChanged") {
-            applyTheme()
-            UserDefaults.standard.set(false, forKey: "themeChanged")
-        }
+        applyTheme()
     }
     
     private func applyTheme() {
         Theme.configure()
-        //navigationController?.navigationBar.barStyle = Theme.barStyle
-        //tabBarController?.tabBar.barStyle = Theme.barStyle
+        navigationController?.navigationBar.barStyle = Theme.barStyle
+        tabBarController?.tabBar.barStyle = Theme.barStyle
         tableView.backgroundColor = Theme.tableBgColor
         tableView.separatorColor = Theme.separatorColor
         tableView.reloadData()
+    }
+    
+    private func getOrganizersAndLocationFor(group: GroupViewModel) {
+        let sqlitedb = SQLiteDatabase()
+        
+        sqlitedb.getOrganizers(for: group) { [weak self] organizers, error in
+            if let error = error {
+                self?.handleError(error: error)
+            }
+            if let organizers = organizers {
+                self?.organizers = organizers
+            }
+        }
+        
+        sqlitedb.getLocation(for: group) { [weak self] location, error in
+            if let error = error {
+                self?.handleError(error: error)
+            }
+            if let location = location {
+                self?.location = location
+            }
+        }
+    }
+    
+    private func handleError(error: SQLiteError) {
+        var errorMessage = ""
+        switch error {
+        case .invalidPath(let message):
+            errorMessage = "Invalid path \(message)."
+        case .failedOpen(let message):
+            errorMessage = "Faild to open database \(message)."
+        case .invalidQuery(let message):
+            errorMessage = "Invalid query \(message)."
+        }
+        let alertController = UIAlertController(title: "SQLite Error", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Table view

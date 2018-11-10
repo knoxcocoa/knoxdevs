@@ -10,9 +10,9 @@ import UIKit
 
 class GroupsViewController: UITableViewController, UISplitViewControllerDelegate, UISearchResultsUpdating {
 
-    let searchController = UISearchController(searchResultsController: nil)
     var groups = [GroupViewModel]()
     var groupsFiltered = [GroupViewModel]()
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +39,11 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
                 self?.groups = groups
             }
         }
-        
-        applyTheme()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.bool(forKey: "themeChanged") {
-            applyTheme()
-            UserDefaults.standard.set(false, forKey: "themeChanged")
-        }
+        applyTheme()
     }
     
     private func applyTheme() {
@@ -60,7 +55,7 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         tableView.reloadData()
     }
     
-    func handleError(error: SQLiteError) {
+    private func handleError(error: SQLiteError) {
         var errorMessage = ""
         switch error {
         case .invalidPath(let message):

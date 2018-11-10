@@ -18,17 +18,8 @@ class AboutViewController: UIViewController {
         return Theme.barStyle == .default ? .default : .lightContent
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        applyTheme()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if UserDefaults.standard.bool(forKey: "themeChanged") {
-            applyTheme()
-            UserDefaults.standard.set(false, forKey: "themeChanged")
-        }
+        applyTheme()
     }
     
     private func applyTheme() {

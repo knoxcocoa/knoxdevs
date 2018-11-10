@@ -17,8 +17,8 @@ class SettingsViewController: UITableViewController {
         return Theme.barStyle == .default ? .default : .lightContent
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         applyTheme()
     }
     
@@ -47,7 +47,6 @@ class SettingsViewController: UITableViewController {
                 themeCell?.accessoryType = .none
             }
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            UserDefaults.standard.set(true, forKey: "themeChanged")
             UserDefaults.standard.set(indexPath.row, forKey: "theme")
             applyTheme()
         }
