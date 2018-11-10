@@ -45,7 +45,29 @@ class GroupViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table view data source
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        applyTheme()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "themeChanged") {
+            applyTheme()
+            UserDefaults.standard.set(false, forKey: "themeChanged")
+        }
+    }
+    
+    private func applyTheme() {
+        Theme.configure()
+        //navigationController?.navigationBar.barStyle = Theme.barStyle
+        //tabBarController?.tabBar.barStyle = Theme.barStyle
+        tableView.backgroundColor = Theme.tableBgColor
+        tableView.separatorColor = Theme.separatorColor
+        tableView.reloadData()
+    }
+    
+    // MARK: - Table view
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return headers.count
@@ -59,20 +81,12 @@ class GroupViewController: UITableViewController {
         guard let group = group, let organizers = organizers else { return 1 }
         
         switch section {
-        case 0:
-            return 1    // banner section
-        case 1:
-            return 1    // description section
-        case 2:
-            return 1    // location section
         case 3:
             return group.links.count    // links section
         case 4:
             return organizers.count     // organizers section
-        case 5:
-            return 1    // contact section
         default:
-            return 1
+            return 1    // banner, description, location, and contact sections
         }
     }
     
@@ -80,6 +94,7 @@ class GroupViewController: UITableViewController {
         
         guard let group = group, let organizers = organizers, let location = location else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+            cell.backgroundColor = Theme.cellBgColor
             cell.textLabel?.text = "none"
             return cell
         }
@@ -88,55 +103,72 @@ class GroupViewController: UITableViewController {
         case 0:
             // banner section
             let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell", for: indexPath) as! BannerTableViewCell
+            cell.backgroundColor = Theme.cellBgColor
             cell.bannerImageView.image = group.banner
             cell.groupName.text = group.name
             cell.groupTags.text = group.tags
+            cell.groupName.textColor = Theme.labelTextColor
+            cell.groupTags.textColor = Theme.labelTextColor
             return cell
         case 1:
             // description section
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+            cell.backgroundColor = Theme.cellBgColor
             cell.textLabel?.text = group.description
+            cell.textLabel?.textColor = Theme.labelTextColor
             return cell
         case 2:
             // location section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationTableViewCell
             cell.parentVC = self
+            cell.backgroundColor = Theme.cellBgColor
             cell.mapView.setRegion(location.region, animated: true)
             cell.mapView.addAnnotation(location.annotation)
             cell.locationLabel.text = location.description
+            cell.locationLabel.textColor = Theme.labelTextColor
             cell.locationUrl = location.website
             return cell
         case 3:
             // links section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath)
+            cell.backgroundColor = Theme.cellBgColor
             cell.imageView?.image = UIImage(named: group.links[indexPath.row].type.rawValue)
+            cell.imageView?.tintColor = Theme.labelTextColor
             cell.textLabel?.text = group.links[indexPath.row].type.rawValue
+            cell.textLabel?.textColor = Theme.labelTextColor
             return cell
         case 4:
             // organizers section
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizerCell", for: indexPath) as! OrganizerTableViewCell
-            let organizer = organizers[indexPath.row]
             cell.parentVC = self
-            cell.organizerIcon.image = organizer.icon
-            cell.organizerLabel.text = organizer.name
+            cell.backgroundColor = Theme.cellBgColor
+            let organizer = organizers[indexPath.row]
             cell.configureGithub(for: organizer.github)
             cell.configureTwitter(for: organizer.twitter)
             cell.configureWebsite(for: organizer.website)
+            cell.organizerIcon.image = organizer.icon
+            cell.organizerLabel.text = organizer.name
+            cell.organizerLabel.textColor = Theme.labelTextColor
             return cell
         case 5:
             // contact section
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmailCell", for: indexPath)
+            cell.backgroundColor = Theme.cellBgColor
             guard let email = group.email else {
                 cell.textLabel?.text = "Email address not available"
                 cell.selectionStyle = .none
                 cell.accessoryType = .none
                 return cell
             }
+            cell.imageView?.tintColor = Theme.labelTextColor
             cell.textLabel?.text = email
+            cell.textLabel?.textColor = Theme.labelTextColor
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
+            cell.backgroundColor = Theme.cellBgColor
             cell.textLabel?.text = "none"
+            cell.textLabel?.textColor = Theme.labelTextColor
             return cell
         }
     }
@@ -147,6 +179,7 @@ class GroupViewController: UITableViewController {
             // links section
             guard let url = group?.links[indexPath.row].url else { return }
             let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredBarTintColor = Theme.tableBgColor
             present(safariVC, animated: true, completion: nil)
         case 5:
             // contact section

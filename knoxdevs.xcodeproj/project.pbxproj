@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */; };
+		8616DB1D2195281B007044D8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616DB1C2195281B007044D8 /* Theme.swift */; };
+		8616DB1F21952A5E007044D8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616DB1E21952A5E007044D8 /* SettingsViewController.swift */; };
+		862D44172196AE2900AF57A4 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862D44162196AE2900AF57A4 /* SplitViewController.swift */; };
 		864126E2216F060A0016BECD /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864126E1216F060A0016BECD /* LocationViewModel.swift */; };
 		866C0EA6217620ED00036649 /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C0EA5217620ED00036649 /* LinkViewModel.swift */; };
 		867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DF35C212CF6A300991CB3 /* AppDelegate.swift */; };
@@ -30,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		8616DB1C2195281B007044D8 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8616DB1E21952A5E007044D8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		862D44162196AE2900AF57A4 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		864126E1216F060A0016BECD /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		866C0EA5217620ED00036649 /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
 		867DF359212CF6A300991CB3 /* knoxdevs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knoxdevs.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +129,8 @@
 				86F471EE2182C04700912739 /* AboutViewController.swift */,
 				8684972D216EBF1A00FFA599 /* GroupsViewController.swift */,
 				867DF370212CF86C00991CB3 /* GroupViewController.swift */,
+				8616DB1E21952A5E007044D8 /* SettingsViewController.swift */,
+				862D44162196AE2900AF57A4 /* SplitViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -133,6 +141,7 @@
 				86AC41BB21334447002E73E5 /* Group.swift */,
 				86849732216ED0DC00FFA599 /* Location.swift */,
 				86AC41BD21334481002E73E5 /* Organizer.swift */,
+				8616DB1C2195281B007044D8 /* Theme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,12 +232,15 @@
 				867DF371212CF86C00991CB3 /* GroupViewController.swift in Sources */,
 				86F471EF2182C04700912739 /* AboutViewController.swift in Sources */,
 				8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */,
+				862D44172196AE2900AF57A4 /* SplitViewController.swift in Sources */,
 				867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */,
 				864126E2216F060A0016BECD /* LocationViewModel.swift in Sources */,
 				86849730216EC32600FFA599 /* LocationTableViewCell.swift in Sources */,
 				866C0EA6217620ED00036649 /* LinkViewModel.swift in Sources */,
+				8616DB1D2195281B007044D8 /* Theme.swift in Sources */,
 				86849733216ED0DC00FFA599 /* Location.swift in Sources */,
 				86FECC4F2173898900682BD0 /* OrganizerTableViewCell.swift in Sources */,
+				8616DB1F21952A5E007044D8 /* SettingsViewController.swift in Sources */,
 				86AC41C621334D1D002E73E5 /* SQLiteDatabase.swift in Sources */,
 				86AC41BE21334481002E73E5 /* Organizer.swift in Sources */,
 				86AC41BC21334447002E73E5 /* Group.swift in Sources */,

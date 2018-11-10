@@ -39,6 +39,25 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
                 self?.groups = groups
             }
         }
+        
+        applyTheme()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "themeChanged") {
+            applyTheme()
+            UserDefaults.standard.set(false, forKey: "themeChanged")
+        }
+    }
+    
+    private func applyTheme() {
+        Theme.configure()
+        navigationController?.navigationBar.barStyle = Theme.barStyle
+        tabBarController?.tabBar.barStyle = Theme.barStyle
+        tableView.backgroundColor = Theme.tableBgColor
+        tableView.separatorColor = Theme.separatorColor
+        tableView.reloadData()
     }
     
     func handleError(error: SQLiteError) {
@@ -83,7 +102,7 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         present(alertController, animated: true, completion: nil)
     }
     
-    // MARK: - Table view data source
+    // MARK: - Table view
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -104,9 +123,12 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         } else {
             group = groups[indexPath.row]
         }
-        cell.textLabel?.text = group.name
+        cell.backgroundColor = Theme.cellBgColor
         cell.detailTextLabel?.text = group.tags
+        cell.detailTextLabel?.textColor = Theme.labelTextColor
         cell.imageView?.image = group.icon
+        cell.textLabel?.text = group.name
+        cell.textLabel?.textColor = Theme.labelTextColor
         return cell
     }
     
@@ -121,24 +143,20 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         tableView.reloadData()
     }
     
-    // Search controller helper methods
-    
+    /// Returns true if there is no text in search bar
     func searchBarIsEmpty() -> Bool {
-        // returns true if the text is empty or nil
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
+    /// Returns true when search is active and search bar is not empty
     func isFiltering() -> Bool {
         return searchController.isActive && !searchBarIsEmpty()
     }
     
     // MARK: - Split view controller
     
-    /*
-     By returning "true" from this UISplitViewControllerDelegate method,
-     the Root View Controller Scene will be shown as the default view on the iPhone.
-     */
-    
+    /// By returning "true" from this UISplitViewControllerDelegate method,
+    /// the Root View Controller Scene will be shown as the default view on the iPhone.
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true
     }

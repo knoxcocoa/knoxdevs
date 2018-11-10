@@ -10,6 +10,32 @@ import UIKit
 import SafariServices
 
 class AboutViewController: UIViewController {
+    
+    @IBOutlet weak var knoxdevsLabel: UILabel!
+    @IBOutlet weak var githubLabel: UILabel!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return Theme.barStyle == .default ? .default : .lightContent
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        applyTheme()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "themeChanged") {
+            applyTheme()
+            UserDefaults.standard.set(false, forKey: "themeChanged")
+        }
+    }
+    
+    private func applyTheme() {
+        knoxdevsLabel.textColor = Theme.labelTextColor
+        githubLabel.textColor = Theme.labelTextColor
+        view.backgroundColor = Theme.viewBgColor
+    }
 
     @IBAction func showWebsite(_ sender: UIButton) {
         switch sender.tag {
@@ -27,4 +53,5 @@ class AboutViewController: UIViewController {
             return
         }
     }
+    
 }
