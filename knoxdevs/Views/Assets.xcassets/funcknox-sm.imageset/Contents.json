@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "funcknox-sm.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "cocoaheads_sm.png",
+      "filename" : "funcknox-sm@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "funcknox-sm@3x.png",
       "scale" : "3x"
     }
   ],

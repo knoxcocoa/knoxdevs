@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "devbeers-sm.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "knoxpy_sm.png",
+      "filename" : "devbeers-sm@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "devbeers-sm@3x.png",
       "scale" : "3x"
     }
   ],

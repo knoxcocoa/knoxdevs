@@ -62,17 +62,17 @@ struct GroupViewModel {
     private static func getIconImage(name: String) -> UIImage {
         switch name {
         case "Agile Knoxville":
-            return UIImage(named: "agile_sm")!
+            return UIImage(named: "agile-sm")!
         case "DC 865":
-            return UIImage(named: "dc865_sm")!
+            return UIImage(named: "dc865-sm")!
         case "DevBeers":
-            return UIImage(named: "devbeers_sm")!
+            return UIImage(named: "devbeers-sm")!
         case "FunctionalKnox":
-            return UIImage(named: "functional_sm")!
+            return UIImage(named: "funcknox-sm")!
         case "Knoxville CocoaHeads":
-            return UIImage(named: "cocoaheads_sm")!
+            return UIImage(named: "cocoaheads-sm")!
         case "KnoxPy":
-            return UIImage(named: "knoxpy_sm")!
+            return UIImage(named: "knoxpy-sm")!
         default:
             return UIImage(named: "groups")!
         }
