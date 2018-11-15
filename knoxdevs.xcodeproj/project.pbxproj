@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86076C59219D17990071E0FF /* icon1-60pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C57219D17990071E0FF /* icon1-60pt@3x.png */; };
+		86076C5A219D17990071E0FF /* icon1-60pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C58219D17990071E0FF /* icon1-60pt@2x.png */; };
+		86076C5D219D17EB0071E0FF /* icon2-60pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C5B219D17EB0071E0FF /* icon2-60pt@2x.png */; };
+		86076C5E219D17EB0071E0FF /* icon2-60pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C5C219D17EB0071E0FF /* icon2-60pt@3x.png */; };
+		86076C61219D18450071E0FF /* icon1-76pt@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C5F219D18450071E0FF /* icon1-76pt@1x.png */; };
+		86076C62219D18450071E0FF /* icon1-76pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C60219D18450071E0FF /* icon1-76pt@2x.png */; };
+		86076C64219D18740071E0FF /* icon1-83.5pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C63219D18740071E0FF /* icon1-83.5pt@2x.png */; };
+		86076C67219D18C20071E0FF /* icon2-76pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C65219D18C20071E0FF /* icon2-76pt@2x.png */; };
+		86076C68219D18C20071E0FF /* icon2-76pt@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C66219D18C20071E0FF /* icon2-76pt@1x.png */; };
+		86076C6A219D18E60071E0FF /* icon2-83.5pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86076C69219D18E60071E0FF /* icon2-83.5pt@2x.png */; };
 		8612EEF4216A8FFC005A3286 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */; };
 		8616DB1D2195281B007044D8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616DB1C2195281B007044D8 /* Theme.swift */; };
 		8616DB1F21952A5E007044D8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616DB1E21952A5E007044D8 /* SettingsViewController.swift */; };
@@ -32,6 +42,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		86076C57219D17990071E0FF /* icon1-60pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon1-60pt@3x.png"; sourceTree = "<group>"; };
+		86076C58219D17990071E0FF /* icon1-60pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon1-60pt@2x.png"; sourceTree = "<group>"; };
+		86076C5B219D17EB0071E0FF /* icon2-60pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2-60pt@2x.png"; sourceTree = "<group>"; };
+		86076C5C219D17EB0071E0FF /* icon2-60pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2-60pt@3x.png"; sourceTree = "<group>"; };
+		86076C5F219D18450071E0FF /* icon1-76pt@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon1-76pt@1x.png"; sourceTree = "<group>"; };
+		86076C60219D18450071E0FF /* icon1-76pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon1-76pt@2x.png"; sourceTree = "<group>"; };
+		86076C63219D18740071E0FF /* icon1-83.5pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon1-83.5pt@2x.png"; sourceTree = "<group>"; };
+		86076C65219D18C20071E0FF /* icon2-76pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2-76pt@2x.png"; sourceTree = "<group>"; };
+		86076C66219D18C20071E0FF /* icon2-76pt@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2-76pt@1x.png"; sourceTree = "<group>"; };
+		86076C69219D18E60071E0FF /* icon2-83.5pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2-83.5pt@2x.png"; sourceTree = "<group>"; };
 		8612EEF3216A8FFC005A3286 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		8616DB1C2195281B007044D8 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8616DB1E21952A5E007044D8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +89,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86076C56219D17060071E0FF /* Alternate App Icons */ = {
+			isa = PBXGroup;
+			children = (
+				86076C5B219D17EB0071E0FF /* icon2-60pt@2x.png */,
+				86076C5C219D17EB0071E0FF /* icon2-60pt@3x.png */,
+				86076C66219D18C20071E0FF /* icon2-76pt@1x.png */,
+				86076C65219D18C20071E0FF /* icon2-76pt@2x.png */,
+				86076C69219D18E60071E0FF /* icon2-83.5pt@2x.png */,
+				86076C58219D17990071E0FF /* icon1-60pt@2x.png */,
+				86076C57219D17990071E0FF /* icon1-60pt@3x.png */,
+				86076C5F219D18450071E0FF /* icon1-76pt@1x.png */,
+				86076C60219D18450071E0FF /* icon1-76pt@2x.png */,
+				86076C63219D18740071E0FF /* icon1-83.5pt@2x.png */,
+			);
+			path = "Alternate App Icons";
+			sourceTree = "<group>";
+		};
 		8612EEF2216A8FE0005A3286 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,12 +150,13 @@
 		86849731216ECEC600FFA599 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				86076C56219D17060071E0FF /* Alternate App Icons */,
+				86FECC542173C2EC00682BD0 /* Assets.xcassets */,
 				869FEC34217246ED00CA60FC /* BannerTableViewCell.swift */,
 				8684972F216EC32600FFA599 /* LocationTableViewCell.swift */,
 				86FECC4E2173898900682BD0 /* OrganizerTableViewCell.swift */,
 				867DF365212CF6A300991CB3 /* LaunchScreen.storyboard */,
 				867DF360212CF6A300991CB3 /* Main.storyboard */,
-				86FECC542173C2EC00682BD0 /* Assets.xcassets */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,9 +252,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				867DF367212CF6A300991CB3 /* LaunchScreen.storyboard in Resources */,
+				86076C5E219D17EB0071E0FF /* icon2-60pt@3x.png in Resources */,
+				86076C6A219D18E60071E0FF /* icon2-83.5pt@2x.png in Resources */,
+				86076C64219D18740071E0FF /* icon1-83.5pt@2x.png in Resources */,
+				86076C67219D18C20071E0FF /* icon2-76pt@2x.png in Resources */,
 				86AC41C021334ACF002E73E5 /* knoxdevs.db in Resources */,
 				867DF362212CF6A300991CB3 /* Main.storyboard in Resources */,
 				86FECC562173C2ED00682BD0 /* Assets.xcassets in Resources */,
+				86076C59219D17990071E0FF /* icon1-60pt@3x.png in Resources */,
+				86076C5D219D17EB0071E0FF /* icon2-60pt@2x.png in Resources */,
+				86076C68219D18C20071E0FF /* icon2-76pt@1x.png in Resources */,
+				86076C5A219D17990071E0FF /* icon1-60pt@2x.png in Resources */,
+				86076C62219D18450071E0FF /* icon1-76pt@2x.png in Resources */,
+				86076C61219D18450071E0FF /* icon1-76pt@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PKEK7KD66W;
 				INFOPLIST_FILE = knoxdevs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,7 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PKEK7KD66W;
 				INFOPLIST_FILE = knoxdevs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

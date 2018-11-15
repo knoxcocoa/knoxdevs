@@ -158,6 +158,7 @@ class GroupViewController: UITableViewController {
             cell.configureTwitter(for: organizer.twitter)
             cell.configureWebsite(for: organizer.website)
             cell.organizerIcon.image = organizer.icon
+            cell.organizerIcon.tintColor = Theme.labelTextColor
             cell.organizerLabel.text = organizer.name
             cell.organizerLabel.textColor = Theme.labelTextColor
             return cell
@@ -166,9 +167,11 @@ class GroupViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmailCell", for: indexPath)
             cell.backgroundColor = Theme.cellBgColor
             guard let email = group.email else {
-                cell.textLabel?.text = "Email address not available"
-                cell.selectionStyle = .none
                 cell.accessoryType = .none
+                cell.imageView?.tintColor = Theme.labelTextColor
+                cell.selectionStyle = .none
+                cell.textLabel?.text = "Email address not available"
+                cell.textLabel?.textColor = Theme.labelTextColor
                 return cell
             }
             cell.imageView?.tintColor = Theme.labelTextColor
