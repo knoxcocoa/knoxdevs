@@ -48,6 +48,32 @@ struct OrganizerViewModel {
             return UIImage(named: "bill")!
         case "Andy Cowell":
             return UIImage(named: "andy")!
+        case "Arash Farsi":
+            return UIImage(named: "arash")!
+        case "Cristi Poindexter":
+            return UIImage(named: "cristi")!
+        case "Christian Biddle":
+            return UIImage(named: "christian")!
+        case "Chris Love":
+            return UIImage(named: "chris")!
+        case "Joe Gray":
+            return UIImage(named: "joe")!
+        case "James Harrell":
+            return UIImage(named: "james")!
+        case "Emily E":
+            return UIImage(named: "emily")!
+        case "Reid Evans":
+            return UIImage(named: "reid")!
+        case "Cameron Presley":
+            return UIImage(named: "cameron")!
+        case "Dennis Stepp":
+            return UIImage(named: "dennis")!
+        case "Jamie Phillips":
+            return UIImage(named: "jamie")!
+        case "Alex Pawlowski":
+            return UIImage(named: "alex")!
+        case "Will Sames":
+            return UIImage(named: "will")!
         default:
             return UIImage(named: "groups")!
         }

@@ -35,10 +35,10 @@
 		86AC41BE21334481002E73E5 /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC41BD21334481002E73E5 /* Organizer.swift */; };
 		86AC41C021334ACF002E73E5 /* knoxdevs.db in Resources */ = {isa = PBXBuildFile; fileRef = 86AC41BF21334ACF002E73E5 /* knoxdevs.db */; };
 		86AC41C621334D1D002E73E5 /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */; };
+		86E8F2D221A0C51300F6B822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86E8F2D121A0C51300F6B822 /* Assets.xcassets */; };
 		86F471EF2182C04700912739 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F471EE2182C04700912739 /* AboutViewController.swift */; };
 		86FECC4F2173898900682BD0 /* OrganizerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FECC4E2173898900682BD0 /* OrganizerTableViewCell.swift */; };
 		86FECC5121738D7300682BD0 /* OrganizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FECC5021738D7300682BD0 /* OrganizerViewModel.swift */; };
-		86FECC562173C2ED00682BD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86FECC542173C2EC00682BD0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,10 +72,10 @@
 		86AC41BD21334481002E73E5 /* Organizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		86AC41BF21334ACF002E73E5 /* knoxdevs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = knoxdevs.db; sourceTree = "<group>"; };
 		86AC41C521334D1D002E73E5 /* SQLiteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
+		86E8F2D121A0C51300F6B822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86F471EE2182C04700912739 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		86FECC4E2173898900682BD0 /* OrganizerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerTableViewCell.swift; sourceTree = "<group>"; };
 		86FECC5021738D7300682BD0 /* OrganizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerViewModel.swift; sourceTree = "<group>"; };
-		86FECC542173C2EC00682BD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				86076C56219D17060071E0FF /* Alternate App Icons */,
-				86FECC542173C2EC00682BD0 /* Assets.xcassets */,
+				86E8F2D121A0C51300F6B822 /* Assets.xcassets */,
 				869FEC34217246ED00CA60FC /* BannerTableViewCell.swift */,
 				8684972F216EC32600FFA599 /* LocationTableViewCell.swift */,
 				86FECC4E2173898900682BD0 /* OrganizerTableViewCell.swift */,
@@ -255,10 +255,10 @@
 				86076C5E219D17EB0071E0FF /* icon2-60pt@3x.png in Resources */,
 				86076C6A219D18E60071E0FF /* icon2-83.5pt@2x.png in Resources */,
 				86076C64219D18740071E0FF /* icon1-83.5pt@2x.png in Resources */,
+				86E8F2D221A0C51300F6B822 /* Assets.xcassets in Resources */,
 				86076C67219D18C20071E0FF /* icon2-76pt@2x.png in Resources */,
 				86AC41C021334ACF002E73E5 /* knoxdevs.db in Resources */,
 				867DF362212CF6A300991CB3 /* Main.storyboard in Resources */,
-				86FECC562173C2ED00682BD0 /* Assets.xcassets in Resources */,
 				86076C59219D17990071E0FF /* icon1-60pt@3x.png in Resources */,
 				86076C5D219D17EB0071E0FF /* icon2-60pt@2x.png in Resources */,
 				86076C68219D18C20071E0FF /* icon2-76pt@1x.png in Resources */,

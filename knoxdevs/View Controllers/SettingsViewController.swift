@@ -13,10 +13,6 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var defaultLabel: UILabel!
     @IBOutlet weak var darkLabel: UILabel!
     
-    @IBOutlet weak var defaultIconLabel: UILabel!
-    @IBOutlet weak var blackWhiteIconLabel: UILabel!
-    @IBOutlet weak var orangeWhiteIconLabel: UILabel!
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return Theme.barStyle == .default ? .default : .lightContent
     }
@@ -30,9 +26,6 @@ class SettingsViewController: UITableViewController {
         Theme.configure()
         defaultLabel.textColor = Theme.labelTextColor
         darkLabel.textColor = Theme.labelTextColor
-        defaultIconLabel.textColor = Theme.labelTextColor
-        blackWhiteIconLabel.textColor = Theme.labelTextColor
-        orangeWhiteIconLabel.textColor = Theme.labelTextColor
         tabBarController?.tabBar.barStyle = Theme.barStyle
         tableView.backgroundColor = Theme.tableBgColor
         tableView.separatorColor = Theme.separatorColor
@@ -69,6 +62,7 @@ class SettingsViewController: UITableViewController {
     /// Reset user defaults when selecting cell in section 2
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // theme section
         let themeRow = UserDefaults.standard.integer(forKey: "theme")
         let themeCell = tableView.cellForRow(at: IndexPath(row: themeRow, section: 0))
         
@@ -81,8 +75,10 @@ class SettingsViewController: UITableViewController {
             applyTheme()
         }
         
+        // app icon section
         let iconRow = UserDefaults.standard.integer(forKey: "icon")
         let iconCell = tableView.cellForRow(at: IndexPath(row: iconRow, section: 1))
+        iconCell?.textLabel?.textColor = Theme.labelTextColor
         
         if indexPath.section == 1 {
             if indexPath.row != iconRow {
@@ -93,6 +89,7 @@ class SettingsViewController: UITableViewController {
             applyIcon()
         }
         
+        // reset defaults section
         if indexPath.section == 2 {
             themeCell?.accessoryType = .none
             iconCell?.accessoryType = .none
