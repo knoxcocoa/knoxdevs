@@ -175,8 +175,8 @@
                                             </constraints>
                                         </mapView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKT-RY-xoE">
-                                            <rect key="frame" x="142.5" y="286" width="90" height="30"/>
-                                            <state key="normal" title="View website"/>
+                                            <rect key="frame" x="113" y="286" width="149" height="30"/>
+                                            <state key="normal" title="View location website"/>
                                             <connections>
                                                 <action selector="showWebsite:" destination="Kfk-dv-HgM" eventType="touchUpInside" id="coi-pg-Apq"/>
                                             </connections>

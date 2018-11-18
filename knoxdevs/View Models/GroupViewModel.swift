@@ -25,15 +25,17 @@ struct GroupViewModel {
         self.name = group.name
         self.tags = group.tags
         self.description = group.description
-        self.links = GroupViewModel.getLinks(group: group)
+        self.links = GroupViewModel.getLinks(for: group)
         self.email = group.email
         self.location = group.location
         self.organizers = group.organizers
-        self.icon = GroupViewModel.getIconImage(name: group.name)
-        self.banner = GroupViewModel.getBannerImage(name: group.name)
+        
+        let images = GroupViewModel.getImages(for: group.name)
+        self.icon = images[0]
+        self.banner = images[1]
     }
-
-    private static func getLinks(group: Group) -> [LinkViewModel] {
+    
+    private static func getLinks(for group: Group) -> [LinkViewModel] {
         var links = [LinkViewModel]()
         
         if let websiteString = group.website {
@@ -55,85 +57,83 @@ struct GroupViewModel {
             let link = LinkViewModel(linkType: .meetup, urlString: meetupString)
             links.append(link)
         }
-
+        
         return links
     }
-    
-    private static func getIconImage(name: String) -> UIImage {
-        switch name {
-        case "Agile Knoxville":
-            return UIImage(named: "agile-sm")!
-        case "DC 865":
-            return UIImage(named: "dc865-sm")!
-        case "DevBeers":
-            return UIImage(named: "devbeers-sm")!
-        case "FunctionalKnox":
-            return UIImage(named: "funcknox-sm")!
-        case "Knoxville CocoaHeads":
-            return UIImage(named: "cocoaheads-sm")!
-        case "KnoxPy":
-            return UIImage(named: "knoxpy-sm")!
-        case "Knox UX":
-            return UIImage(named: "knoxux-sm")!
-        case "DevOps Knoxville":
-            return UIImage(named: "devops-sm")!
-        case "Knox.NET":
-            return UIImage(named: "knoxnet-sm")!
-        case "Knox3dp":
-            return UIImage(named: "knox3dp-sm")!
-        case "KnoxData":
-            return UIImage(named: "knoxdata-sm")!
-        case "KnoxDevs":
-            return UIImage(named: "knoxdevs-sm")!
-        case "KnoxJava":
-            return UIImage(named: "knoxjava-sm")!
-        case "KnoxQA":
-            return UIImage(named: "knoxqa-sm")!
-        case "Knoxville Game Design":
-            return UIImage(named: "knoxgame-sm")!
-        case "Knoxville JS":
-            return UIImage(named: "knoxjs-sm")!
-        default:
-            return UIImage(named: "default-sm")!
-        }
-    }
 
-    private static func getBannerImage(name: String) -> UIImage {
-        switch name {
+    /// image[0] table icon image, image[1] large banner image
+    private static func getImages(for groupName: String) -> [UIImage] {
+        var images = [UIImage]()
+
+        switch groupName {
         case "Agile Knoxville":
-            return UIImage(named: "agile-lg")!
+            images.append(UIImage(named: "agile-sm")!)
+            images.append(UIImage(named: "agile-lg")!)
+            return images
         case "DC 865":
-            return UIImage(named: "dc865-lg")!
+            images.append(UIImage(named: "dc865-sm")!)
+            images.append(UIImage(named: "dc865-lg")!)
+            return images
         case "DevBeers":
-            return UIImage(named: "devbeers-lg")!
+            images.append(UIImage(named: "devbeers-sm")!)
+            images.append(UIImage(named: "devbeers-lg")!)
+            return images
         case "FunctionalKnox":
-            return UIImage(named: "funcknox-lg")!
+            images.append(UIImage(named: "funcknox-sm")!)
+            images.append(UIImage(named: "funcknox-lg")!)
+            return images
         case "Knoxville CocoaHeads":
-            return UIImage(named: "cocoaheads-lg")!
+            images.append(UIImage(named: "cocoaheads-sm")!)
+            images.append(UIImage(named: "cocoaheads-lg")!)
+            return images
         case "KnoxPy":
-            return UIImage(named: "knoxpy-lg")!
+            images.append(UIImage(named: "knoxpy-sm")!)
+            images.append(UIImage(named: "knoxpy-lg")!)
+            return images
         case "KnoxUX":
-            return UIImage(named: "knoxux-lg")!
+            images.append(UIImage(named: "knoxux-sm")!)
+            images.append(UIImage(named: "knoxux-lg")!)
+            return images
         case "DevOps Knoxville":
-            return UIImage(named: "devops-lg")!
+            images.append(UIImage(named: "devops-sm")!)
+            images.append(UIImage(named: "devops-lg")!)
+            return images
         case "Knox.NET":
-            return UIImage(named: "knoxnet-lg")!
+            images.append(UIImage(named: "knoxnet-sm")!)
+            images.append(UIImage(named: "knoxnet-lg")!)
+            return images
         case "Knox3dp":
-            return UIImage(named: "knox3dp-lg")!
+            images.append(UIImage(named: "knox3dp-sm")!)
+            images.append(UIImage(named: "knox3dp-lg")!)
+            return images
         case "KnoxData":
-            return UIImage(named: "knoxdata-lg")!
+            images.append(UIImage(named: "knoxdata-sm")!)
+            images.append(UIImage(named: "knoxdata-lg")!)
+            return images
         case "KnoxDevs":
-            return UIImage(named: "knoxdevs-lg")!
+            images.append(UIImage(named: "knoxdevs-sm")!)
+            images.append(UIImage(named: "knoxdevs-lg")!)
+            return images
         case "KnoxJava":
-            return UIImage(named: "knoxjava-lg")!
+            images.append(UIImage(named: "knoxjava-sm")!)
+            images.append(UIImage(named: "knoxjava-lg")!)
+            return images
         case "KnoxQA":
-            return UIImage(named: "knoxqa-lg")!
+            images.append(UIImage(named: "knoxqa-sm")!)
+            images.append(UIImage(named: "knoxqa-lg")!)
+            return images
         case "Knoxville Game Design":
-            return UIImage(named: "knoxgame-lg")!
+            images.append(UIImage(named: "knoxgame-sm")!)
+            images.append(UIImage(named: "knoxgame-lg")!)
+            return images
         case "Knoxville JS":
-            return UIImage(named: "knoxjs-lg")!
+            images.append(UIImage(named: "knoxjs-sm")!)
+            images.append(UIImage(named: "knoxjs-lg")!)
+            return images
         default:
-            return UIImage(named: "default-lg")!
+            images.append(UIImage(named: "default-sm")!)
+            images.append(UIImage(named: "default-lg")!)
+            return images
         }
     }
 }
