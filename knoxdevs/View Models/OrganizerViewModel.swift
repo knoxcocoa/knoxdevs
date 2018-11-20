@@ -74,9 +74,50 @@ struct OrganizerViewModel {
             return UIImage(named: "alex")!
         case "Will Sames":
             return UIImage(named: "will")!
+        case "Ken Cavagnolo":
+            return UIImage(named: "ken")!
+        case "James Horey":
+            return UIImage(named: "jamesh")!
+        case "Cody Lambert":
+            return UIImage(named: "cody")!
+        case "Christopher Lamm":
+            return UIImage(named: "christopher")!
+        case "Kris Ann":
+            return UIImage(named: "kris")!
+        case "Adrian Carr":
+            return UIImage(named: "adrian")!
+        case "Brant Boehmann":
+            return UIImage(named: "brant")!
+        case "Wade Chandler":
+            return UIImage(named: "wade")!
+        case "Katie Cleveland":
+            return UIImage(named: "katie")!
+        case "Jameson McGhee":
+            return UIImage(named: "jameson")!
+        case "Mark Kelly":
+            return UIImage(named: "mark")!
+        case "Shane":
+            return UIImage(named: "shane")!
+        case "Levi Smith":
+            return UIImage(named: "levi")!
+        case "Josh Carroll":
+            return UIImage(named: "josh")!
+        case "Arlene Rose":
+            return UIImage(named: "arlene")!
+        case "Christine Jones":
+            return UIImage(named: "christine")!
+        case "James Broyles":
+            return UIImage(named: "broyles")!
+        case "Michael Mizner":
+            return UIImage(named: "michael")!
+        case "Daryl":
+            return UIImage(named: "daryl")!
+        case "Doug Laney":
+            return UIImage(named: "doug")!
+        case "Laurie Kay":
+            return UIImage(named: "laurie")!
         default:
             return UIImage(named: "groups")!
         }
     }
-
 }

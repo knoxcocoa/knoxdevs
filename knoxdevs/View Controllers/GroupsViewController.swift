@@ -122,6 +122,7 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         cell.detailTextLabel?.text = group.tags
         cell.detailTextLabel?.textColor = Theme.labelTextColor
         cell.imageView?.image = group.icon
+        cell.selectedBackgroundView = Theme.selectedBgView
         cell.textLabel?.text = group.name
         cell.textLabel?.textColor = Theme.labelTextColor
         return cell

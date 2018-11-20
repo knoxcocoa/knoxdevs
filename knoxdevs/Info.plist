@@ -74,6 +74,15 @@
                 <key>UIPrerenderedIcon</key>
                 <false/>
             </dict>
+            <key>AppIcon-3</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>icon3-60pt</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
         </dict>
     </dict>
     <key>CFBundleIcons~ipad</key>
@@ -105,6 +114,16 @@
                 <array>
                     <string>icon2-76pt</string>
                     <string>icon2-83.5pt</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>AppIcon-3</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>icon3-76pt</string>
+                    <string>icon3-83.5pt</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>

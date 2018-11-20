@@ -10,9 +10,6 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
 
-    @IBOutlet weak var defaultLabel: UILabel!
-    @IBOutlet weak var darkLabel: UILabel!
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return Theme.barStyle == .default ? .default : .lightContent
     }
@@ -24,12 +21,9 @@ class SettingsViewController: UITableViewController {
     
     private func applyTheme() {
         Theme.configure()
-        defaultLabel.textColor = Theme.labelTextColor
-        darkLabel.textColor = Theme.labelTextColor
         tabBarController?.tabBar.barStyle = Theme.barStyle
         tableView.backgroundColor = Theme.tableBgColor
         tableView.separatorColor = Theme.separatorColor
-        
         tableView.reloadData()
         setNeedsStatusBarAppearanceUpdate()
     }
@@ -48,6 +42,10 @@ class SettingsViewController: UITableViewController {
             if UIApplication.shared.supportsAlternateIcons {
                 UIApplication.shared.setAlternateIconName("AppIcon-2")
             }
+        case 3:
+            if UIApplication.shared.supportsAlternateIcons {
+                UIApplication.shared.setAlternateIconName("AppIcon-3")
+            }
         default:
             if UIApplication.shared.supportsAlternateIcons {
                 UIApplication.shared.setAlternateIconName(nil)
@@ -57,12 +55,9 @@ class SettingsViewController: UITableViewController {
 
     // MARK: - Table view
 
-    /// Show checkmark and set theme when selecting a row in section 0
-    /// Show checkmark and set app icon when selecting a row in section 1
-    /// Reset user defaults when selecting cell in section 2
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // theme section
+        // show checkmark and set theme when selecting cells in section 0
         let themeRow = UserDefaults.standard.integer(forKey: "theme")
         let themeCell = tableView.cellForRow(at: IndexPath(row: themeRow, section: 0))
         
@@ -75,10 +70,9 @@ class SettingsViewController: UITableViewController {
             applyTheme()
         }
         
-        // app icon section
+        // show checkmark and set app icon when selecting cells in section 1
         let iconRow = UserDefaults.standard.integer(forKey: "icon")
         let iconCell = tableView.cellForRow(at: IndexPath(row: iconRow, section: 1))
-        iconCell?.textLabel?.textColor = Theme.labelTextColor
         
         if indexPath.section == 1 {
             if indexPath.row != iconRow {
@@ -89,7 +83,7 @@ class SettingsViewController: UITableViewController {
             applyIcon()
         }
         
-        // reset defaults section
+        // reset user defaults when selecting cell in section 2
         if indexPath.section == 2 {
             themeCell?.accessoryType = .none
             iconCell?.accessoryType = .none
@@ -100,27 +94,29 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    /// Remove checkmark from cell upon deselection
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     
-    /// Show checkmark in cell of selected theme
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
+        // show checkmark in cell of current theme
         if indexPath.section == 0 {
             if indexPath.row == UserDefaults.standard.integer(forKey: "theme") {
                 cell.accessoryType = .checkmark
             }
         }
         
+        // show checkmark in cell of current app icon
         if indexPath.section == 1 {
             if indexPath.row == UserDefaults.standard.integer(forKey: "icon") {
                 cell.accessoryType = .checkmark
             }
         }
         
+        // configure cell appearance from theme colors
         cell.backgroundColor = Theme.cellBgColor
+        cell.textLabel?.textColor = Theme.labelTextColor
     }
 
 }

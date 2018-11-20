@@ -22,8 +22,9 @@ struct Theme {
     
     static var tabBarBgColor = UIColor()        // tab bar background color
 
-    static var accessoryColor = UIColor()       // table view cell accessory color
-    static var cellBgColor = UIColor()          // table view cell background color
+    static var accessoryColor = UIColor()       // table cell accessory color
+    static var cellBgColor = UIColor()          // table cell background color
+    static var selectedBgView = UIView()        // table cell background view for selection color
     static var separatorColor = UIColor()       // table view separator color
     static var tableBgColor = UIColor()         // table view background color
     
@@ -51,13 +52,13 @@ struct Theme {
         
         // Table view
         cellBgColor = UIColor.white
+        selectedBgView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         separatorColor = UIColor(red: 228/255, green: 228/255, blue: 230/255, alpha: 1)
         tableBgColor = UIColor(red: 235/255, green: 235/255, blue: 243/255, alpha: 1)
     }
     
     static func darkTheme() {
         // General
-        buttonTextColor = UIColor.yellow
         labelTextColor = UIColor.white
         viewBgColor = UIColor(red: 23/255, green: 32/255, blue: 42/255, alpha: 1)
         barStyle = UIBarStyle.black
@@ -69,6 +70,7 @@ struct Theme {
         
         // Table view
         cellBgColor = UIColor(red: 23/255, green: 32/255, blue: 42/255, alpha: 1)
+        selectedBgView.backgroundColor = UIColor(white: 0.1, alpha: 1.0)
         separatorColor = UIColor(red: 58/255, green: 68/255, blue: 76/255, alpha: 1)
         tableBgColor = UIColor(red: 17/255, green: 23/255, blue: 29/255, alpha: 1)
     }

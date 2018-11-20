@@ -22,6 +22,11 @@
 		8616DB1F21952A5E007044D8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616DB1E21952A5E007044D8 /* SettingsViewController.swift */; };
 		862D44172196AE2900AF57A4 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862D44162196AE2900AF57A4 /* SplitViewController.swift */; };
 		864126E2216F060A0016BECD /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864126E1216F060A0016BECD /* LocationViewModel.swift */; };
+		864818D221A3221900D09860 /* icon3-60pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864818D021A3221900D09860 /* icon3-60pt@2x.png */; };
+		864818D321A3221900D09860 /* icon3-60pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864818D121A3221900D09860 /* icon3-60pt@3x.png */; };
+		864818D721A3240400D09860 /* icon3-76pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864818D421A3240400D09860 /* icon3-76pt@2x.png */; };
+		864818D821A3240400D09860 /* icon3-76pt@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864818D521A3240400D09860 /* icon3-76pt@1x.png */; };
+		864818D921A3240400D09860 /* icon3-83.5pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864818D621A3240400D09860 /* icon3-83.5pt@2x.png */; };
 		866C0EA6217620ED00036649 /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C0EA5217620ED00036649 /* LinkViewModel.swift */; };
 		867DF35D212CF6A300991CB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DF35C212CF6A300991CB3 /* AppDelegate.swift */; };
 		867DF362212CF6A300991CB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867DF360212CF6A300991CB3 /* Main.storyboard */; };
@@ -57,6 +62,11 @@
 		8616DB1E21952A5E007044D8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		862D44162196AE2900AF57A4 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		864126E1216F060A0016BECD /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		864818D021A3221900D09860 /* icon3-60pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon3-60pt@2x.png"; sourceTree = "<group>"; };
+		864818D121A3221900D09860 /* icon3-60pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon3-60pt@3x.png"; sourceTree = "<group>"; };
+		864818D421A3240400D09860 /* icon3-76pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon3-76pt@2x.png"; sourceTree = "<group>"; };
+		864818D521A3240400D09860 /* icon3-76pt@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon3-76pt@1x.png"; sourceTree = "<group>"; };
+		864818D621A3240400D09860 /* icon3-83.5pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon3-83.5pt@2x.png"; sourceTree = "<group>"; };
 		866C0EA5217620ED00036649 /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
 		867DF359212CF6A300991CB3 /* knoxdevs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knoxdevs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867DF35C212CF6A300991CB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +102,11 @@
 		86076C56219D17060071E0FF /* Alternate App Icons */ = {
 			isa = PBXGroup;
 			children = (
+				864818D021A3221900D09860 /* icon3-60pt@2x.png */,
+				864818D121A3221900D09860 /* icon3-60pt@3x.png */,
+				864818D521A3240400D09860 /* icon3-76pt@1x.png */,
+				864818D421A3240400D09860 /* icon3-76pt@2x.png */,
+				864818D621A3240400D09860 /* icon3-83.5pt@2x.png */,
 				86076C5B219D17EB0071E0FF /* icon2-60pt@2x.png */,
 				86076C5C219D17EB0071E0FF /* icon2-60pt@3x.png */,
 				86076C66219D18C20071E0FF /* icon2-76pt@1x.png */,
@@ -253,16 +268,21 @@
 			files = (
 				867DF367212CF6A300991CB3 /* LaunchScreen.storyboard in Resources */,
 				86076C5E219D17EB0071E0FF /* icon2-60pt@3x.png in Resources */,
+				864818D321A3221900D09860 /* icon3-60pt@3x.png in Resources */,
 				86076C6A219D18E60071E0FF /* icon2-83.5pt@2x.png in Resources */,
+				864818D921A3240400D09860 /* icon3-83.5pt@2x.png in Resources */,
 				86076C64219D18740071E0FF /* icon1-83.5pt@2x.png in Resources */,
 				86E8F2D221A0C51300F6B822 /* Assets.xcassets in Resources */,
 				86076C67219D18C20071E0FF /* icon2-76pt@2x.png in Resources */,
+				864818D221A3221900D09860 /* icon3-60pt@2x.png in Resources */,
 				86AC41C021334ACF002E73E5 /* knoxdevs.db in Resources */,
 				867DF362212CF6A300991CB3 /* Main.storyboard in Resources */,
+				864818D721A3240400D09860 /* icon3-76pt@2x.png in Resources */,
 				86076C59219D17990071E0FF /* icon1-60pt@3x.png in Resources */,
 				86076C5D219D17EB0071E0FF /* icon2-60pt@2x.png in Resources */,
 				86076C68219D18C20071E0FF /* icon2-76pt@1x.png in Resources */,
 				86076C5A219D17990071E0FF /* icon1-60pt@2x.png in Resources */,
+				864818D821A3240400D09860 /* icon3-76pt@1x.png in Resources */,
 				86076C62219D18450071E0FF /* icon1-76pt@2x.png in Resources */,
 				86076C61219D18450071E0FF /* icon1-76pt@1x.png in Resources */,
 			);

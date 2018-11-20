@@ -145,6 +145,7 @@ class GroupViewController: UITableViewController {
             cell.backgroundColor = Theme.cellBgColor
             cell.imageView?.image = UIImage(named: group.links[indexPath.row].type.rawValue)
             cell.imageView?.tintColor = Theme.labelTextColor
+            cell.selectedBackgroundView = Theme.selectedBgView
             cell.textLabel?.text = group.links[indexPath.row].type.rawValue
             cell.textLabel?.textColor = Theme.labelTextColor
             return cell

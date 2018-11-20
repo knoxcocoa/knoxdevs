@@ -130,6 +130,10 @@ struct GroupViewModel {
             images.append(UIImage(named: "knoxjs-sm")!)
             images.append(UIImage(named: "knoxjs-lg")!)
             return images
+        case "Knox Makers":
+            images.append(UIImage(named: "knoxmakers-sm")!)
+            images.append(UIImage(named: "knoxmakers-lg")!)
+            return images
         default:
             images.append(UIImage(named: "default-sm")!)
             images.append(UIImage(named: "default-lg")!)
