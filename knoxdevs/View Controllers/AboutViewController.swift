@@ -34,11 +34,13 @@ class AboutViewController: UIViewController {
             // knoxdevs website button
             let url = URL(string: "https://knoxdevs.com")!
             let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredBarTintColor = Theme.tableBgColor
             present(safariVC, animated: true, completion: nil)
         case 1:
             // knoxville cocoaheads github button
-            let url = URL(string: "https://github.com/knoxcocoa")!
+            let url = URL(string: "https://github.com/knoxcocoa/knoxdevs")!
             let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredBarTintColor = Theme.tableBgColor
             present(safariVC, animated: true, completion: nil)
         default:
             return

@@ -30,7 +30,7 @@ Follow the [GitHub flow] guide to contribute to the KnoxDevs app. Basically,
 development work is done on a branch other than `master` then submitted as a
 Pull Request.
 
-[issues]: http://www.apple.com
+[issues]: https://github.com/knoxcocoa/knoxdevs/issues
 [db browser]: https://sqlitebrowser.org
 [sketch]: https://www.sketchapp.com
 [style guide]: https://github.com/raywenderlich/swift-style-guide
