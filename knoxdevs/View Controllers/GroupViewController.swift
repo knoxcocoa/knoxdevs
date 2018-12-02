@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 class GroupViewController: UITableViewController {
-    
+
     let headers = ["", "Description", "Meeting Location", "Group Links", "Organizers", "Contact"]
     var location: LocationViewModel?
     var organizers: [OrganizerViewModel]?
@@ -23,12 +23,12 @@ class GroupViewController: UITableViewController {
             getOrganizersAndLocationFor(group: group)
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyTheme()
     }
-    
+
     private func applyTheme() {
         Theme.configure()
         navigationController?.navigationBar.barStyle = Theme.barStyle
@@ -37,7 +37,7 @@ class GroupViewController: UITableViewController {
         tableView.separatorColor = Theme.separatorColor
         tableView.reloadData()
     }
-    
+
     private func getOrganizersAndLocationFor(group: GroupViewModel) {
         let sqlitedb = SQLiteDatabase()
         

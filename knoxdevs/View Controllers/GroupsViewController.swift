@@ -13,24 +13,24 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
     var groups = [GroupViewModel]()
     var groupsFiltered = [GroupViewModel]()
     let searchController = UISearchController(searchResultsController: nil)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // setup split view controller
         splitViewController?.delegate = self
         splitViewController?.preferredDisplayMode = .allVisible
-        
+
         // setup search controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Groups and Tags"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
+
         // populate groups view model array from database file
         let sqlitedb = SQLiteDatabase()
-        
+
         sqlitedb.getGroups { [weak self] groups, error in
             if let error = error {
                 self?.handleError(error: error)
@@ -39,13 +39,21 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
                 self?.groups = groups
             }
         }
+
+        // configure detail view controller content when app first appears on iPad
+        if let splitVC = self.splitViewController {
+            let detailVC = splitVC.viewControllers.last as? GroupViewController
+            let group = groups.first
+            detailVC?.group = group
+            applyTheme()
+        }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyTheme()
     }
-    
+
     private func applyTheme() {
         Theme.configure()
         navigationController?.navigationBar.barStyle = Theme.barStyle
@@ -54,7 +62,7 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         tableView.separatorColor = Theme.separatorColor
         tableView.reloadData()
     }
-    
+
     private func handleError(error: SQLiteError) {
         var errorMessage = ""
         switch error {
@@ -72,7 +80,7 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
+
     @IBAction func sortGroups(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Sort Groups",
                                                 message: "Sort groups according to group name.",
@@ -96,20 +104,20 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
-    
+
     // MARK: - Table view
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             return groupsFiltered.count
         }
         return groups.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
         let group: GroupViewModel
@@ -127,9 +135,9 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         cell.textLabel?.textColor = Theme.labelTextColor
         return cell
     }
-    
+
     // MARK: - Search controller
-    
+
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
         let text = searchText.lowercased()
@@ -138,27 +146,27 @@ class GroupsViewController: UITableViewController, UISplitViewControllerDelegate
         }
         tableView.reloadData()
     }
-    
+
     /// Returns true if there is no text in search bar
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
-    
+
     /// Returns true when search is active and search bar is not empty
     func isFiltering() -> Bool {
         return searchController.isActive && !searchBarIsEmpty()
     }
-    
+
     // MARK: - Split view controller
-    
+
     /// By returning "true" from this UISplitViewControllerDelegate method,
     /// the Root View Controller Scene will be shown as the default view on the iPhone.
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true
     }
-    
+
     // MARK: - Navigation
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GroupSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {

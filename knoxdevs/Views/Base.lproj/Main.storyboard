@@ -358,17 +358,43 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ko6-3a-diu">
                                 <rect key="frame" x="16" y="60" width="343" height="142.5"/>
-                                <string key="text">📱This app was made by the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN. Visit the KnoxDevs website to learn more.</string>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="550" id="KbW-HS-LvY"/>
+                                </constraints>
+                                <mutableString key="text">📱This app was made by the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN. Visit the KnoxDevs website to learn more.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KbW-HS-LvY"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="KbW-HS-LvY"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HC0-Yf-FzH">
                                 <rect key="frame" x="16" y="270.5" width="343" height="81.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="550" id="CBa-pS-wxP"/>
+                                </constraints>
                                 <string key="text">🌱 The KnoxDevs app is open source and available on GitHub. Please contribute by submitting a Pull Request or Issue. Or show your support by giving the repo a star.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CBa-pS-wxP"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="CBa-pS-wxP"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1C-3T-yf4">
                                 <rect key="frame" x="113.5" y="210.5" width="148" height="30"/>
@@ -398,7 +424,9 @@
                             <constraint firstItem="feu-YL-Pm8" firstAttribute="top" secondItem="HC0-Yf-FzH" secondAttribute="bottom" constant="8" id="JT1-Cy-x62"/>
                             <constraint firstItem="HC0-Yf-FzH" firstAttribute="leading" secondItem="sJD-Xu-uQH" secondAttribute="leading" constant="16" id="Lk3-tK-Ema"/>
                             <constraint firstItem="feu-YL-Pm8" firstAttribute="centerX" secondItem="D8C-if-ZtN" secondAttribute="centerX" id="RDc-PX-05n"/>
+                            <constraint firstItem="HC0-Yf-FzH" firstAttribute="centerX" secondItem="D8C-if-ZtN" secondAttribute="centerX" id="RsR-aI-TB9"/>
                             <constraint firstItem="Ko6-3a-diu" firstAttribute="leading" secondItem="sJD-Xu-uQH" secondAttribute="leading" constant="16" id="Xar-V7-BNF"/>
+                            <constraint firstItem="Ko6-3a-diu" firstAttribute="centerX" secondItem="D8C-if-ZtN" secondAttribute="centerX" id="Xf6-CF-ABQ"/>
                             <constraint firstItem="m1C-3T-yf4" firstAttribute="centerX" secondItem="D8C-if-ZtN" secondAttribute="centerX" id="YMd-KE-U1q"/>
                             <constraint firstItem="sJD-Xu-uQH" firstAttribute="trailing" secondItem="HC0-Yf-FzH" secondAttribute="trailing" constant="16" id="aqs-eH-Vb3"/>
                             <constraint firstItem="sJD-Xu-uQH" firstAttribute="trailing" secondItem="Ko6-3a-diu" secondAttribute="trailing" constant="16" id="dT2-6d-nwo"/>
@@ -406,6 +434,30 @@
                             <constraint firstItem="m1C-3T-yf4" firstAttribute="top" secondItem="Ko6-3a-diu" secondAttribute="bottom" constant="8" id="zbI-0z-xGe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sJD-Xu-uQH"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aqs-eH-Vb3"/>
+                                <exclude reference="dT2-6d-nwo"/>
+                                <exclude reference="Xar-V7-BNF"/>
+                                <exclude reference="Xf6-CF-ABQ"/>
+                                <exclude reference="Lk3-tK-Ema"/>
+                                <exclude reference="RsR-aI-TB9"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="aqs-eH-Vb3"/>
+                                <include reference="dT2-6d-nwo"/>
+                                <include reference="Xar-V7-BNF"/>
+                                <include reference="Lk3-tK-Ema"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="Xf6-CF-ABQ"/>
+                                <include reference="RsR-aI-TB9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="about" selectedImage="about" id="fED-XS-uwQ"/>
                     <connections>

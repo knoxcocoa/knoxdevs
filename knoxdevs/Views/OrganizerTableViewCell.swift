@@ -28,16 +28,19 @@ class OrganizerTableViewCell: UITableViewCell {
             // github button
             guard let parentVC = parentVC, let url = githubUrl else { return }
             let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredBarTintColor = Theme.tableBgColor
             parentVC.present(safariVC, animated: true, completion: nil)
         case 1:
             // twitter button
             guard let parentVC = parentVC, let url = twitterUrl else { return }
             let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredBarTintColor = Theme.tableBgColor
             parentVC.present(safariVC, animated: true, completion: nil)
         case 2:
             // website button
             guard let parentVC = parentVC, let url = websiteUrl else { return }
             let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredBarTintColor = Theme.tableBgColor
             parentVC.present(safariVC, animated: true, completion: nil)
         default:
             return

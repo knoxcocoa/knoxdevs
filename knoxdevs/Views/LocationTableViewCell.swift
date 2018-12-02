@@ -21,6 +21,7 @@ class LocationTableViewCell: UITableViewCell {
     @IBAction func showWebsite(_ sender: UIButton) {
         guard let parentVC = parentVC, let url = locationUrl else { return }
         let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredBarTintColor = Theme.tableBgColor
         parentVC.present(safariVC, animated: true, completion: nil)
     }
 
