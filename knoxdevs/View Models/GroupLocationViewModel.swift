@@ -1,15 +1,15 @@
 //
-//  LocationViewModel.swift
+//  GroupLocationViewModel.swift
 //  knoxdevs
 //
-//  Created by Gavin on 10/11/18.
+//  Created by Gavin on 12/08/18.
 //  Copyright © 2018 Gavin Wiggins. All rights reserved.
 //
 
 import Foundation
 import MapKit
 
-struct LocationViewModel {
+struct GroupLocationViewModel {
 
     let description: String
     let region: MKCoordinateRegion
@@ -29,6 +29,7 @@ struct LocationViewModel {
 
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        annotation.title = location.name
         self.annotation = annotation
 
         let url = URL(string: location.website)

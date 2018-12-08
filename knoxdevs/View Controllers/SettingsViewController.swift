@@ -21,6 +21,7 @@ class SettingsViewController: UITableViewController {
     
     private func applyTheme() {
         Theme.configure()
+        navigationController?.navigationBar.barStyle = Theme.barStyle
         tabBarController?.tabBar.barStyle = Theme.barStyle
         tableView.backgroundColor = Theme.tableBgColor
         tableView.separatorColor = Theme.separatorColor
@@ -57,24 +58,11 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // show checkmark and set theme when selecting cells in section 0
-        let themeRow = UserDefaults.standard.integer(forKey: "theme")
-        let themeCell = tableView.cellForRow(at: IndexPath(row: themeRow, section: 0))
+        // seciton 0 - show checkmark and set app icon when selecting cells
+        let iconRow = UserDefaults.standard.integer(forKey: "icon")
+        let iconCell = tableView.cellForRow(at: IndexPath(row: iconRow, section: 0))
         
         if indexPath.section == 0 {
-            if indexPath.row != themeRow {
-                themeCell?.accessoryType = .none
-            }
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            UserDefaults.standard.set(indexPath.row, forKey: "theme")
-            applyTheme()
-        }
-        
-        // show checkmark and set app icon when selecting cells in section 1
-        let iconRow = UserDefaults.standard.integer(forKey: "icon")
-        let iconCell = tableView.cellForRow(at: IndexPath(row: iconRow, section: 1))
-        
-        if indexPath.section == 1 {
             if indexPath.row != iconRow {
                 iconCell?.accessoryType = .none
             }
@@ -82,15 +70,30 @@ class SettingsViewController: UITableViewController {
             UserDefaults.standard.set(indexPath.row, forKey: "icon")
             applyIcon()
         }
+
+        // section 1 - show checkmark and set theme when selecting cells
+        let themeRow = UserDefaults.standard.integer(forKey: "theme")
+        let themeCell = tableView.cellForRow(at: IndexPath(row: themeRow, section: 1))
         
-        // reset user defaults when selecting cell in section 2
-        if indexPath.section == 2 {
-            themeCell?.accessoryType = .none
-            iconCell?.accessoryType = .none
-            guard let bundle = Bundle.main.bundleIdentifier else { return }
-            UserDefaults.standard.removePersistentDomain(forName: bundle)
+        if indexPath.section == 1 {
+            if indexPath.row != themeRow {
+                themeCell?.accessoryType = .none
+            }
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            UserDefaults.standard.set(indexPath.row, forKey: "theme")
             applyTheme()
-            applyIcon()
+        }
+
+        // section 2 - reset user defaults when selecting cell
+        if indexPath.section == 2 {
+            if indexPath.row == 1 {
+                themeCell?.accessoryType = .none
+                iconCell?.accessoryType = .none
+                guard let bundle = Bundle.main.bundleIdentifier else { return }
+                UserDefaults.standard.removePersistentDomain(forName: bundle)
+                applyTheme()
+                applyIcon()
+            }
         }
     }
     
@@ -100,16 +103,16 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-        // show checkmark in cell of current theme
+        // section 0 - show checkmark in cell of current app icon
         if indexPath.section == 0 {
-            if indexPath.row == UserDefaults.standard.integer(forKey: "theme") {
+            if indexPath.row == UserDefaults.standard.integer(forKey: "icon") {
                 cell.accessoryType = .checkmark
             }
         }
-        
-        // show checkmark in cell of current app icon
+
+        // section 1 - show checkmark in cell of current theme
         if indexPath.section == 1 {
-            if indexPath.row == UserDefaults.standard.integer(forKey: "icon") {
+            if indexPath.row == UserDefaults.standard.integer(forKey: "theme") {
                 cell.accessoryType = .checkmark
             }
         }

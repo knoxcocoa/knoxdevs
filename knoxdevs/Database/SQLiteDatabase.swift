@@ -154,7 +154,7 @@ class SQLiteDatabase {
     }
     
     /// Get a location from SQLite database or receive an error.
-    func getLocation(for group: GroupViewModel, completion: @escaping (LocationViewModel?, SQLiteError?) -> Void) {
+    func getGroupLocation(for group: GroupViewModel, completion: @escaping (GroupLocationViewModel?, SQLiteError?) -> Void) {
         
         if let error = openDatabase() {
             completion(nil, error)
@@ -183,7 +183,7 @@ class SQLiteDatabase {
                 let website = String(cString: websiteText!)
                 
                 let location = Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
-                let locationVM = LocationViewModel(location: location)
+                let locationVM = GroupLocationViewModel(location: location)
                 
                 completion(locationVM, nil)
             } else {
@@ -198,4 +198,46 @@ class SQLiteDatabase {
         }
     }
 
+    /// Get all locations from SQLite database or receive an error.
+    func getLocationAnnotations(completion: @escaping ([LocationAnnotation]?, SQLiteError?) -> Void) {
+        
+        if let error = openDatabase() {
+            completion(nil, error)
+            return
+        }
+        
+        let queryStatementString = "SELECT * FROM locations;"
+        var queryStatement: OpaquePointer? = nil
+        defer { sqlite3_finalize(queryStatement) }
+        
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            var locationAnnotations = [LocationAnnotation]()
+            
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let id = sqlite3_column_int64(queryStatement, 0)
+                
+                let nameText = sqlite3_column_text(queryStatement, 1)
+                let name = String(cString: nameText!)
+                
+                let addressText = sqlite3_column_text(queryStatement, 2)
+                let address = String(cString: addressText!)
+                
+                let lat = sqlite3_column_double(queryStatement, 3)
+                let lon = sqlite3_column_double(queryStatement, 4)
+                
+                let websiteText = sqlite3_column_text(queryStatement, 5)
+                let website = String(cString: websiteText!)
+                
+                let location = Location(id: id, name: name, address: address, latitude: lat, longitude: lon, website: website)
+                let locationAnnotation = LocationAnnotation(location: location)
+                locationAnnotations.append(locationAnnotation)
+            }
+            
+            completion(locationAnnotations, nil)
+        } else {
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            let error = SQLiteError.invalidQuery(errorMessage)
+            completion(nil, error)
+        }
+    }
 }

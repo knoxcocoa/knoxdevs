@@ -12,7 +12,7 @@ import SafariServices
 class GroupViewController: UITableViewController {
 
     let headers = ["", "Description", "Meeting Location", "Group Links", "Organizers", "Contact"]
-    var location: LocationViewModel?
+    var location: GroupLocationViewModel?
     var organizers: [OrganizerViewModel]?
 
     var group: GroupViewModel? {
@@ -50,7 +50,7 @@ class GroupViewController: UITableViewController {
             }
         }
         
-        sqlitedb.getLocation(for: group) { [weak self] location, error in
+        sqlitedb.getGroupLocation(for: group) { [weak self] location, error in
             if let error = error {
                 self?.handleError(error: error)
             }
@@ -135,6 +135,7 @@ class GroupViewController: UITableViewController {
             cell.backgroundColor = Theme.cellBgColor
             cell.mapView.setRegion(location.region, animated: true)
             cell.mapView.addAnnotation(location.annotation)
+            cell.locationAnnotation = location.annotation
             cell.locationLabel.text = location.description
             cell.locationLabel.textColor = Theme.labelTextColor
             cell.locationUrl = location.website

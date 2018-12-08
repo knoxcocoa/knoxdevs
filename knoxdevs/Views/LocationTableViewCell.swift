@@ -12,6 +12,7 @@ import SafariServices
 
 class LocationTableViewCell: UITableViewCell {
 
+    var locationAnnotation: MKAnnotation?
     var locationUrl: URL?
     var parentVC: UIViewController?
 
@@ -23,6 +24,13 @@ class LocationTableViewCell: UITableViewCell {
         let safariVC = SFSafariViewController(url: url)
         safariVC.preferredBarTintColor = Theme.tableBgColor
         parentVC.present(safariVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func showDirections(_ sender: UIButton) {
+        guard let annotation = locationAnnotation else { return }
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate))
+        mapItem.name = annotation.title ?? "Meetup"
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
     }
 
 }
