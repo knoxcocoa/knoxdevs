@@ -223,7 +223,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKp-gx-Lam">
-                                            <rect key="frame" x="161" y="36" width="48" height="30"/>
+                                            <rect key="frame" x="143" y="36" width="48" height="30"/>
                                             <state key="normal" title="Twitter"/>
                                             <connections>
                                                 <action selector="showWebsite:" destination="U2m-F8-Wvf" eventType="touchUpInside" id="KYc-ex-O9u"/>
@@ -244,26 +244,35 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lP0-uM-J0L">
-                                            <rect key="frame" x="239" y="36" width="56" height="30"/>
+                                            <rect key="frame" x="203" y="36" width="56" height="30"/>
                                             <state key="normal" title="Website"/>
                                             <connections>
                                                 <action selector="showWebsite:" destination="U2m-F8-Wvf" eventType="touchUpInside" id="x7w-H8-JuG"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCw-cE-r8S">
+                                            <rect key="frame" x="271" y="36" width="86" height="30"/>
+                                            <state key="normal" title="Add Contact"/>
+                                            <connections>
+                                                <action selector="addContact:" destination="U2m-F8-Wvf" eventType="touchUpInside" id="mkU-RX-dgv"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="lP0-uM-J0L" firstAttribute="leading" secondItem="cKp-gx-Lam" secondAttribute="trailing" constant="30" id="0A8-Pj-dSv"/>
+                                        <constraint firstItem="lP0-uM-J0L" firstAttribute="leading" secondItem="cKp-gx-Lam" secondAttribute="trailing" constant="12" id="0A8-Pj-dSv"/>
                                         <constraint firstItem="0e3-3V-YDe" firstAttribute="leading" secondItem="zSd-Cd-sEN" secondAttribute="leadingMargin" id="2kt-LB-wHQ"/>
                                         <constraint firstItem="9fV-lm-Pc3" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="25" id="2z7-WO-26j"/>
+                                        <constraint firstItem="OCw-cE-r8S" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="25" id="AYK-1D-C6x"/>
                                         <constraint firstItem="RMS-Lq-qgV" firstAttribute="leading" secondItem="0e3-3V-YDe" secondAttribute="trailing" constant="16" id="Fj0-iL-MWv"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="lP0-uM-J0L" secondAttribute="trailing" constant="64" id="HGy-hx-xbh"/>
                                         <constraint firstItem="lP0-uM-J0L" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="25" id="J9s-VN-nS9"/>
-                                        <constraint firstItem="cKp-gx-Lam" firstAttribute="leading" secondItem="9fV-lm-Pc3" secondAttribute="trailing" constant="30" id="LLG-4l-4rr"/>
+                                        <constraint firstItem="cKp-gx-Lam" firstAttribute="leading" secondItem="9fV-lm-Pc3" secondAttribute="trailing" constant="12" id="LLG-4l-4rr"/>
+                                        <constraint firstItem="OCw-cE-r8S" firstAttribute="leading" secondItem="lP0-uM-J0L" secondAttribute="trailing" constant="12" id="U92-8H-jPW"/>
                                         <constraint firstItem="RMS-Lq-qgV" firstAttribute="trailing" secondItem="zSd-Cd-sEN" secondAttribute="trailingMargin" id="cYv-g0-NvY"/>
                                         <constraint firstItem="cKp-gx-Lam" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="25" id="dP4-f0-8ns"/>
                                         <constraint firstItem="0e3-3V-YDe" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="5" id="fPP-0o-CyR"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="0e3-3V-YDe" secondAttribute="bottom" constant="6" id="gJp-ZM-6c1"/>
                                         <constraint firstItem="RMS-Lq-qgV" firstAttribute="top" secondItem="zSd-Cd-sEN" secondAttribute="topMargin" constant="5" id="pbv-0M-WtB"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OCw-cE-r8S" secondAttribute="trailing" constant="18" id="toW-39-dsX"/>
                                         <constraint firstItem="9fV-lm-Pc3" firstAttribute="leading" secondItem="0e3-3V-YDe" secondAttribute="trailing" constant="16" id="u8k-pQ-LJ3"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -371,7 +380,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="550" id="KbW-HS-LvY"/>
                                 </constraints>
-                                <string key="text">📱This app was made by the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN. Visit the KnoxDevs website to learn more.</string>
+                                <mutableString key="text">📱This app was made the Knoxville CocoaHeads in support of the KnoxDevs community. KnoxDevs is a registered non-profit organization whose sole mission is to foster a healthy software developer community in Knoxville, TN. Visit the KnoxDevs website to learn more.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

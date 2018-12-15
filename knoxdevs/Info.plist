@@ -130,5 +130,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>This feature requires access to your contacts. If granted, the information for the selected organizer will be added to the Contacts app.</string>
 </dict>
 </plist>

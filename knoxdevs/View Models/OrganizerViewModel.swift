@@ -13,6 +13,7 @@ struct OrganizerViewModel {
 
     let name: String
     let icon: UIImage
+    let twitterName: String?
     let twitter: URL?
     let github: URL?
     let website: URL?
@@ -20,6 +21,12 @@ struct OrganizerViewModel {
     init(organizer: Organizer) {
         self.name = organizer.name
         self.icon = OrganizerViewModel.getIcon(name: organizer.name)
+        
+        if let twitterUser = organizer.twitter {
+            self.twitterName = twitterUser
+        } else {
+            self.twitterName = nil
+        }
         
         if let twitterString = organizer.twitter, let url = URL(string: twitterString) {
             self.twitter = URL(string: "https://twitter.com/\(url)")

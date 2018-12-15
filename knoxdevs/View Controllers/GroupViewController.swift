@@ -153,16 +153,7 @@ class GroupViewController: UITableViewController {
         case 4:
             // organizers section
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizerCell", for: indexPath) as! OrganizerTableViewCell
-            cell.parentVC = self
-            cell.backgroundColor = Theme.cellBgColor
-            let organizer = organizers[indexPath.row]
-            cell.configureGithub(for: organizer.github)
-            cell.configureTwitter(for: organizer.twitter)
-            cell.configureWebsite(for: organizer.website)
-            cell.organizerIcon.image = organizer.icon
-            cell.organizerIcon.tintColor = Theme.labelTextColor
-            cell.organizerLabel.text = organizer.name
-            cell.organizerLabel.textColor = Theme.labelTextColor
+            cell.configure(for: organizers[indexPath.row], fromVC: self)
             return cell
         case 5:
             // contact section
